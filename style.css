@@ -1,0 +1,302 @@
+/*
+Theme Name: Lend me your ear
+Theme URI:
+Description: Lee Jordan's portfolio theme built from near nothing
+Version: 1.0
+Author: Lee Jordan
+Author URI: http://lendmeyourear.net
+Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, threaded-comments, sticky-post
+*/
+/* variables */
+/* mixins */
+/* basic reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+pre,
+blockquote,
+cite,
+table {
+  margin-bottom: 0.8em;
+}
+ul,
+ol,
+li {
+  margin-left: 0.5em;
+}
+body {
+  text-align: left;
+  font-family: 'Signika Negative', Helvetica, Arial, sans-serif;
+  color: #333333;
+  background-color: #fff;
+}
+/* helpers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+/* links */
+a {
+  text-decoration: none;
+  color: #00b5e9;
+}
+a:hover,
+a:focus,
+a:active {
+  text-decoration: underline;
+}
+img {
+  border: none;
+}
+/* header */
+.header {
+  position: relative;
+  text-align: center;
+}
+.header h1 {
+  margin: 30px 0 20px;
+  padding: 0;
+}
+.header h1 a:hover,
+.header h1 a:focus,
+.header h1 a:active {
+  text-decoration: none;
+}
+.header .subheader {
+  color: #d8d4d5;
+}
+.header p {
+  margin: 0 0 20px;
+}
+/* post panels */
+.panel-container {
+  -webkit-backface-visibility: hidden;
+  text-align: center;
+}
+.tags-container {
+  margin: 0 auto 30px;
+  width: 95%;
+}
+.tags-container .tag {
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+  border-radius: 3px;
+  border: 1px solid #fff;
+  overflow: hidden;
+  background-color: #f4f4f7;
+  color: #00b5e9;
+  display: inline-block;
+  padding: 8px;
+}
+.tags-container .tag:hover,
+.tags-container .tag:focus {
+  -webkit-transform: scale(1.02) rotate(-1deg);
+  -moz-transform: scale(1.02) rotate(-1deg);
+  -ms-transform: scale(1.02) rotate(-1deg);
+  -o-transform: scale(1.02) rotate(-1deg);
+  transform: scale(1.02) rotate(-1deg);
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 0 15px #9b9b9b;
+  border: 1px solid #00b5e9;
+}
+.tags-container .tag:active,
+.tags-container .tag.active {
+  -webkit-transform: scale(1.06) rotate(-1deg);
+  -moz-transform: scale(1.06) rotate(-1deg);
+  -ms-transform: scale(1.06) rotate(-1deg);
+  -o-transform: scale(1.06) rotate(-1deg);
+  transform: scale(1.06) rotate(-1deg);
+  text-decoration: none;
+  outline: none;
+  color: #f4f4f7;
+  background-color: #91d9f9;
+  box-shadow: 0 0 25px #9b9b9b;
+  border: 1px solid #006683;
+}
+.tags-container .tag:active h2,
+.tags-container .tag.active h2 {
+  color: #f4f4f7 !important;
+}
+.tags-container .tag:active p,
+.tags-container .tag.active p {
+  color: #f4f4f7 !important;
+}
+.panel {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 5% 30px;
+  display: inline-block;
+}
+.panel a {
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+  border-radius: 3px;
+  border: 1px solid #fff;
+  overflow: hidden;
+  background-color: #f4f4f7;
+  color: #00b5e9;
+  display: block;
+  text-align: left;
+}
+.panel a:hover,
+.panel a:focus {
+  -webkit-transform: scale(1.02) rotate(-1deg);
+  -moz-transform: scale(1.02) rotate(-1deg);
+  -ms-transform: scale(1.02) rotate(-1deg);
+  -o-transform: scale(1.02) rotate(-1deg);
+  transform: scale(1.02) rotate(-1deg);
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 0 15px #9b9b9b;
+  border: 1px solid #00b5e9;
+}
+.panel a:active,
+.panel a.active {
+  -webkit-transform: scale(1.06) rotate(-1deg);
+  -moz-transform: scale(1.06) rotate(-1deg);
+  -ms-transform: scale(1.06) rotate(-1deg);
+  -o-transform: scale(1.06) rotate(-1deg);
+  transform: scale(1.06) rotate(-1deg);
+  text-decoration: none;
+  outline: none;
+  color: #f4f4f7;
+  background-color: #91d9f9;
+  box-shadow: 0 0 25px #9b9b9b;
+  border: 1px solid #006683;
+}
+.panel a:active h2,
+.panel a.active h2 {
+  color: #f4f4f7 !important;
+}
+.panel a:active p,
+.panel a.active p {
+  color: #f4f4f7 !important;
+}
+.panel a .panel-intro-wrap {
+  display: table;
+  height: 120px;
+  padding: 8px;
+}
+.panel a .panel-intro-wrap .panel-intro {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+}
+.panel a .panel-intro-wrap .panel-intro h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: normal;
+}
+.panel a .panel-intro-wrap .panel-intro p {
+  padding: 0;
+  margin: 14px 0 0;
+  font-size: 14px;
+  line-height: 18px;
+  color: #9b9b9b;
+}
+/* post image */
+.wp-post-image {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  margin-bottom: 30px;
+}
+/* single */
+.post-container {
+  max-width: 770px;
+  width: 95%;
+  margin: 30px auto 0;
+}
+.post-container .post-content img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  margin: 30px auto;
+}
+.post-nav {
+  position: fixed;
+  display: block;
+  height: 100%;
+  width: 50px;
+}
+.post-nav a {
+  display: block;
+  height: 100%;
+  width: 50px;
+  background-color: #d8d4d5;
+}
+.post-nav a:hover,
+.post-nav a:focus,
+.post-nav a:active {
+  text-decoration: none;
+  background-color: #9b9b9b;
+  color: #fff;
+}
+.post-nav.prev-post {
+  left: 0;
+}
+.post-nav.next-post {
+  right: 0;
+}
+/* responsiveness */
+@media (min-width: 768px) {
+  .header h1 {
+    margin: 50px 0 20px;
+  }
+  .tags-container {
+    margin: 0 auto 50px;
+    width: 70%;
+  }
+  .panel {
+    width: 46%;
+    padding: 0 4% 30px;
+  }
+  .post-container {
+    width: 70%;
+  }
+}
+@media (min-width: 1200px) {
+  .tags-container {
+    width: 60%;
+  }
+  .panel {
+    width: 33%;
+    padding: 0 4% 30px;
+  }
+  .post-container {
+    width: 60%;
+  }
+}
+@media (min-width: 1600px) {
+  .panel {
+    width: 22%;
+    padding: 0 2% 30px;
+  }
+}
