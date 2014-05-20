@@ -42,8 +42,8 @@
             </div>
             <div class="post-container">
                 <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
-                <h1><?php the_title(); ?></h1>
                 <div class="post-content">
+                    <h1><?php the_title(); ?></h1>
                     <?php the_content('Read more &gt;'); ?>
                 </div>
                 <div class="postmeta">
@@ -65,7 +65,9 @@
                             </div>
                         </div>
                     </div>
-                    <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
+                    <div class="panel-feature-image">
+                        <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
+                    </div>
                 </a>
             </div>
 

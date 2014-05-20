@@ -167,8 +167,36 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
             display: block;
             text-align: left;
 
+            &:hover,
+            &:focus,
+            &:active {
+                .panel-feature-image {
+                    overflow: hidden;
+
+                    img {
+                        -webkit-backface-visibility: hidden;
+                        -webkit-transition: all 3s ease-out;
+                        -moz-transition: all 3s ease-out;
+                        -o-transition: all 3s ease-out;
+                        -ms-transition: all 3s ease-out;
+                        transition: all 3s ease-out;
+                        -webkit-transform: scale(1.2) rotate(0.1deg);
+                        -moz-transform:    scale(1.2) rotate(0.1deg);
+                        -ms-transform:     scale(1.2) rotate(0.1deg);
+                        -o-transform:      scale(1.2) rotate(0.1deg);
+                        transform:         scale(1.2) rotate(0.1deg);
+                        -webkit-transform-origin: 0 0;
+                        -moz-transform-origin:    0 0;
+                        -ms-transform-origin:     0 0;
+                        -o-transform-origin:      0 0;
+                        transform-origin:         0 0;
+                    }
+                }
+            }
+
             .panel-intro-wrap {
                 display: table;
+                table-layout: fixed;
                 height: 120px;
                 padding: 8px;
 
@@ -202,7 +230,6 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         max-width: 100%;
         width: auto;
         height: auto;
-        margin-bottom: 30px;
     }
 
 /* single */
@@ -212,6 +239,8 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         margin: 30px auto 0;
 
         .post-content {
+            margin-top: 30px;
+
             img {
                 max-width: 100%;
                 width: auto;
