@@ -72,7 +72,8 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
 
 /* basic reset */
     * { margin: 0; padding: 0; }
-    h1, h2, h3, h4, h5, h6, p, ul, ol, pre, blockquote, cite, table { margin-bottom: 0.8em; }
+    h1, h2, h3, h4, h5, h6 { padding-top: 1em; margin-bottom: 0.6em; }
+    p, ul, ol, pre, blockquote, cite, table { margin-bottom: 0.6em; }
     ul, ol, li { margin-left: 0.5em; }
 
     body {
@@ -80,18 +81,6 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         font-family: 'Signika Negative', Helvetica, Arial, sans-serif;
         color: @text-color;
         background-color: #fff;
-    }
-
-/* helpers */
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        padding: 0;
-        overflow: hidden;
-        clip: rect(0,0,0,0);
-        border: 0;
     }
 
 /* links */
@@ -108,6 +97,31 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
 
     img {
         border: none;
+    }
+
+/* default elements */
+    hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid @secondary-light;
+        clear: both;
+    }
+
+/* helpers */
+    .clearfix {
+        display: block;
+        width: 100%;
+        height: 0;
+        clear: both;
+    }
+
+    .pull-left {
+        float: left;
+    }
+
+    .pull-right {
+        float: right;
     }
 
 /* header */
@@ -143,17 +157,6 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         text-align: center;
     }
 
-    .tags-container {
-        margin: 0 auto 30px;
-        width: 95%;
-
-        .tag {
-            .panel-style();
-            display: inline-block;
-            padding: 8px;
-        }
-    }
-
     .panel {
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
@@ -175,11 +178,11 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
 
                     img {
                         -webkit-backface-visibility: hidden;
-                        -webkit-transition: all 3s ease-out;
-                        -moz-transition: all 3s ease-out;
-                        -o-transition: all 3s ease-out;
-                        -ms-transition: all 3s ease-out;
-                        transition: all 3s ease-out;
+                        -webkit-transition: all 6s ease-out;
+                        -moz-transition: all 6s ease-out;
+                        -o-transition: all 6s ease-out;
+                        -ms-transition: all 6s ease-out;
+                        transition: all 6s ease-out;
                         -webkit-transform: scale(1.2) rotate(0.1deg);
                         -moz-transform:    scale(1.2) rotate(0.1deg);
                         -ms-transform:     scale(1.2) rotate(0.1deg);
@@ -225,6 +228,18 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         }
     }
 
+/* tags */
+.tags-container {
+    margin: 0 auto 30px;
+    width: 95%;
+}
+
+.tag-pill {
+    .panel-style();
+    display: inline-block;
+    padding: 8px;
+}
+
 /* post image */
     .wp-post-image {
         max-width: 100%;
@@ -236,10 +251,30 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
     .post-container {
         max-width: 770px;
         width: 95%;
-        margin: 30px auto 0;
+        margin: 0 auto;
+
+        .post-header {
+            margin-top: 40px;
+            background-color: @panel-bg;
+            color: @feature-dark;
+            border: 1px solid @panel-bg;
+
+            .post-header-text {
+                padding: 2em 1em 1em;
+
+                .post-title {
+                    padding-top: 0;
+                    margin-bottom: 0.4em;
+                }
+
+                .post-tags {
+                    margin-bottom: 0;
+                }
+            }
+        }
 
         .post-content {
-            margin-top: 30px;
+            margin: 40px auto;
 
             img {
                 max-width: 100%;
@@ -250,35 +285,48 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         }
     }
 
-    .post-nav {
-        position: fixed;
-        display: block;
-        height: 100%;
-        width: 50px;
-
-        a {
-            display: block;
-            height: 100%;
-            width: 50px;
-            background-color: @secondary-light;
-
-            &:hover,
-            &:focus,
-            &:active {
-                text-decoration: none;
-                background-color: @secondary-dark;
-                color: #fff;
-            }
-        }
-
-        &.prev-post {
-            left: 0;
-        }
-
-        &.next-post {
-            right: 0;
-        }
-    }
+/* comments */
+    ol.commentlist { list-style:none; margin:0; padding:0; text-indent:0; }
+    ol.commentlist li { margin: 0; }
+    ol.commentlist li.alt { }
+    ol.commentlist li.bypostauthor {}
+    ol.commentlist li.byuser {}
+    ol.commentlist li.pingback { margin: 1em; padding: 2em; }
+    ol.commentlist li.comment-author-admin {}
+    ol.commentlist li.comment { border-bottom:1px solid #666; padding:2em; }
+    ol.commentlist li.comment div.comment-author {}
+    ol.commentlist li.comment div.vcard { }
+    ol.commentlist li.comment div.vcard cite.fn { }
+    ol.commentlist li.comment div.vcard cite.fn a.url {}
+    ol.commentlist li.comment div.vcard img.avatar { border:2px solid @feature-light; border-radius: 5px; float:left; margin:0 1em 0 0; }
+    ol.commentlist li.comment div.vcard img.avatar-32 {}
+    ol.commentlist li.comment div.vcard img.photo {}
+    ol.commentlist li.comment div.vcard span.says {}
+    ol.commentlist li.comment div.commentmetadata {margin-bottom: 1em;}
+    ol.commentlist li.comment div.comment-meta {  }
+    ol.commentlist li.comment div.comment-meta a { color:#ccc; }
+    ol.commentlist li.comment p {  }
+    ol.commentlist li.comment ul {  }
+    ol.commentlist li.comment div.reply {  }
+    ol.commentlist li.comment div.reply a { font-weight:bold; }
+    ol.commentlist li.comment ul.children { list-style:none; margin:1em 0 0; text-indent:0; }
+    ol.commentlist li.comment ul.children li {}
+    ol.commentlist li.comment ul.children li.alt {}
+    ol.commentlist li.comment ul.children li.bypostauthor {}
+    ol.commentlist li.comment ul.children li.byuser {}
+    ol.commentlist li.comment ul.children li.comment {}
+    ol.commentlist li.comment ul.children li.comment-author-admin {}
+    ol.commentlist li.comment ul.children li.depth-2 { border-left:5px solid #555; margin:0 0 .25em .25em; }
+    ol.commentlist li.comment ul.children li.depth-3 { border-left:5px solid #999; margin:0 0 .25em .25em; }
+    ol.commentlist li.comment ul.children li.depth-4 { border-left:5px solid #bbb; margin:0 0 .25em .25em; }
+    ol.commentlist li.comment ul.children li.depth-5 {}
+    ol.commentlist li.comment ul.children li.odd {}
+    ol.commentlist li.even { background: @highlight; }
+    ol.commentlist li.odd { background: lighten(@secondary-light, 20%); }
+    ol.commentlist li.parent { border-left:5px solid #111; }
+    ol.commentlist li.thread-alt { }
+    ol.commentlist li.thread-even {}
+    ol.commentlist li.thread-odd {}
 
 /* responsiveness */
     @media (min-width: 768px) {

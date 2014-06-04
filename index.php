@@ -11,7 +11,7 @@
                     $tags = get_tags();
                     if ($tags) {
                         foreach ($tags as $tag) {
-                            echo '<a class="tag ' . $tag->name . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
+                            echo '<a class="tag-pill ' . $tag->name . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
                         }
                     }
                 ?>
@@ -25,37 +25,30 @@
 
             <div class="post-container">
                 <h1><?php the_title(); ?></h1>
-                <div class="post-content">
-                    <?php the_content('Read more &gt;'); ?>
-                </div>
-                <p><?php wp_link_pages('next_or_number=number&pagelink=page %'); ?></p>
-                <p><?php edit_post_link('Edit', '[ ', ' ]'); ?></p>
+                <?php the_content('Read more &gt;'); ?>
             </div>
 
         <?php elseif (is_single()) : /* show post contents */ ?>
 
-            <div class="post-nav prev-post">
-                <?php previous_post_link('%link', '<span>&lt;</span><span class="sr-only">Previous post</span>') ?>
-            </div>
-            <div class="post-nav next-post">
-                <?php next_post_link('%link', '<span class="sr-only">Next post</span><span>&gt;</span>') ?>
-            </div>
             <div class="post-container">
-                <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
+                <div class="post-header">
+                    <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
+                    <div class="post-header-text">
+                        <h1 class="post-title"><?php the_title(); ?></h1>
+                        <p class="post-tags"><?php echo get_the_tag_list( null, ' / ', null ); ?></p>
+                    </div>
+                </div>
                 <div class="post-content">
-                    <h1><?php the_title(); ?></h1>
                     <?php the_content('Read more &gt;'); ?>
+                    <p>by <?php the_author_posts_link(); ?> on <?php the_date(); ?></p>
                 </div>
-                <div class="postmeta">
-                    <p>
-                    <?php the_tags('Tags: ', ', ', ' | '); ?> <?php the_category(', ') ?> | <a href="<?php the_permalink() ?>">Permalink</a> |  <?php comments_popup_link('Leave a comment', '1 Comment', '% Comments'); ?> | <?php edit_post_link('Edit', ' ', ' | '); ?> Posted <?php the_date() ?> by  <?php the_author_link(); ?> </p>
-                </div>
+                <hr>
                 <?php comments_template(); ?>
             </div>
 
         <?php else : /* show excerpts */ ?>
 
-            <div class="panel">
+            <div class="panel <?php foreach (get_the_tags() as $tag) { echo $tag->name . " "; } ?>">
                 <a href="<?php the_permalink() ?>">
                     <div class="panel-intro-wrap">
                         <div class="panel-intro">

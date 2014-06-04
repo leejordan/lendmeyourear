@@ -1,12 +1,10 @@
 <?php
-
-/* nav menus */
-if ( function_exists( 'register_nav_menu' ) ) {
-	register_nav_menu('footer_nav', __('Footer Navigation Menu'));
-}
-
 /* automatic feed links */
 add_theme_support('automatic-feed-links');
 add_theme_support( 'post-thumbnails' );
 
+function post_link_attributes($output) {
+    $code = 'class="tag-pill"';
+    return str_replace('<a href=', '<a '.$code.' href=', $output);
+}
 ?>
