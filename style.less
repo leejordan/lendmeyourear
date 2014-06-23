@@ -81,6 +81,7 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         font-family: 'Signika Negative', Helvetica, Arial, sans-serif;
         color: @text-color;
         background-color: #fff;
+        font-size: 1em;
     }
 
 /* links */
@@ -88,10 +89,13 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         text-decoration: none;
         color: @feature-dark;
 
-        &:hover,
+        &:hover {
+            text-decoration: underline;
+        }
+
         &:focus,
         &:active {
-            text-decoration: underline;
+            outline: 1px solid @feature-light;
         }
     }
 
@@ -99,12 +103,33 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         border: none;
     }
 
-/* default elements */
+/* form */
+    input,
+    textarea {
+        padding: 10px;
+        font-family: 'Signika Negative', Helvetica, Arial, sans-serif;
+        font-size: 1em;
+        color: @feature-dark;
+        border: 1px solid @feature-light;
+        background-color: @panel-bg;
+
+        &:hover,
+        &:focus {
+            outline: none;
+            border: 1px solid @feature-dark;
+        }
+
+        &[type="submit"] {
+            cursor: pointer;
+        }
+    }
+
+/* general elements */
     hr {
         margin-top: 20px;
         margin-bottom: 20px;
         border: 0;
-        border-top: 1px solid @secondary-light;
+        border-top: 1px solid @feature-light;
         clear: both;
     }
 
@@ -254,17 +279,17 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         margin: 0 auto;
 
         .post-header {
-            margin-top: 40px;
+            margin-top: 30px;
             background-color: @panel-bg;
             color: @feature-dark;
             border: 1px solid @panel-bg;
 
             .post-header-text {
-                padding: 2em 1em 1em;
+                padding: 20px 10px;
 
                 .post-title {
                     padding-top: 0;
-                    margin-bottom: 0.4em;
+                    margin-bottom: 10px;
                 }
 
                 .post-tags {
@@ -274,13 +299,27 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         }
 
         .post-content {
-            margin: 40px auto;
+            margin: 60px auto;
 
             img {
                 max-width: 100%;
                 width: auto;
                 height: auto;
                 margin: 30px auto;
+            }
+        }
+
+        .post-footer {
+            margin: 30px auto 60px;
+
+            .prev,
+            .next {
+                width: 100%;
+                text-align: center;
+            }
+
+            .prev {
+                border-bottom: 1px solid @feature-light;
             }
         }
     }
@@ -291,14 +330,15 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
     ol.commentlist li.alt { }
     ol.commentlist li.bypostauthor {}
     ol.commentlist li.byuser {}
-    ol.commentlist li.pingback { margin: 1em; padding: 2em; }
+    ol.commentlist li.pingback { border: 1px solid @feature-light; padding: 1em; margin: 1em 0; border-radius: 3px;}
     ol.commentlist li.comment-author-admin {}
-    ol.commentlist li.comment { border-bottom:1px solid #666; padding:2em; }
+    ol.commentlist li.comment { border: 1px solid @feature-light; padding:1em; margin: 1em 0; border-radius: 3px;}
+    ol.commentlist li.comment:last-child {  }
     ol.commentlist li.comment div.comment-author {}
     ol.commentlist li.comment div.vcard { }
     ol.commentlist li.comment div.vcard cite.fn { }
     ol.commentlist li.comment div.vcard cite.fn a.url {}
-    ol.commentlist li.comment div.vcard img.avatar { border:2px solid @feature-light; border-radius: 5px; float:left; margin:0 1em 0 0; }
+    ol.commentlist li.comment div.vcard img.avatar { border:2px solid @feature-dark; border-radius: 5px; float:left; margin:0 1em 0 0; }
     ol.commentlist li.comment div.vcard img.avatar-32 {}
     ol.commentlist li.comment div.vcard img.photo {}
     ol.commentlist li.comment div.vcard span.says {}
@@ -316,14 +356,14 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
     ol.commentlist li.comment ul.children li.byuser {}
     ol.commentlist li.comment ul.children li.comment {}
     ol.commentlist li.comment ul.children li.comment-author-admin {}
-    ol.commentlist li.comment ul.children li.depth-2 { border-left:5px solid #555; margin:0 0 .25em .25em; }
-    ol.commentlist li.comment ul.children li.depth-3 { border-left:5px solid #999; margin:0 0 .25em .25em; }
-    ol.commentlist li.comment ul.children li.depth-4 { border-left:5px solid #bbb; margin:0 0 .25em .25em; }
-    ol.commentlist li.comment ul.children li.depth-5 {}
+    ol.commentlist li.comment ul.children li.depth-2 { }
+    ol.commentlist li.comment ul.children li.depth-3 { }
+    ol.commentlist li.comment ul.children li.depth-4 { }
+    ol.commentlist li.comment ul.children li.depth-5 { }
     ol.commentlist li.comment ul.children li.odd {}
     ol.commentlist li.even { background: @highlight; }
-    ol.commentlist li.odd { background: lighten(@secondary-light, 20%); }
-    ol.commentlist li.parent { border-left:5px solid #111; }
+    ol.commentlist li.odd { background: darken(@highlight, 5%); }
+    ol.commentlist li.parent { }
     ol.commentlist li.thread-alt { }
     ol.commentlist li.thread-even {}
     ol.commentlist li.thread-odd {}
@@ -332,12 +372,12 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
     @media (min-width: 768px) {
         .header {
             h1 {
-                margin: 50px 0 20px;
+                margin: 30px 0 10px;
             }
         }
 
         .tags-container {
-            margin: 0 auto 50px;
+            margin: 0 auto 30px;
             width: 70%;
         }
 
@@ -348,6 +388,17 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
 
         .post-container {
             width: 70%;
+
+            .post-footer {
+                .prev,
+                .next {
+                    width: auto;
+                }
+
+                .prev {
+                    border-bottom: none;
+                }
+            }
         }
     }
 

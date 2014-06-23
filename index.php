@@ -40,10 +40,12 @@
                 </div>
                 <div class="post-content">
                     <?php the_content('Read more &gt;'); ?>
-                    <p>by <?php the_author_posts_link(); ?> on <?php the_date(); ?></p>
                 </div>
-                <hr>
-                <?php comments_template(); ?>
+                <div class="post-footer">
+                    <div class="clearfix"></div>
+                    <p><?php the_date(); ?></p>
+                    <?php comments_template(null, true); ?>
+                </div>
             </div>
 
         <?php else : /* show excerpts */ ?>
