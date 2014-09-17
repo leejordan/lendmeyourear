@@ -3,19 +3,24 @@
 
     <?php /* begin the loop */ if (have_posts()) : ?>
 
-    <?php if (!is_single() && !is_page()) : ?>
+    <?php if (!is_single() && !is_page() && true) : ?>
+
+        <div class="panel-container tags-container">
+            <?php
+                $tags = get_tags();
+                if ($tags) {
+                    foreach ($tags as $tag) {
+                        echo '<a class="tag-pill ' . $tag->name . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
+                    }
+                }
+            ?>
+        </div>
+
+    <? endif ?>
+
+    <?php if (!is_page() && !is_single()) : ?>
 
         <div class="panel-container">
-            <div class="tags-container">
-                <?php
-                    $tags = get_tags();
-                    if ($tags) {
-                        foreach ($tags as $tag) {
-                            echo '<a class="tag-pill ' . $tag->name . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
-                        }
-                    }
-                ?>
-            </div>
 
     <? endif ?>
 
@@ -23,27 +28,29 @@
 
 		<?php if (is_page()) : /* show page contents */ ?>
 
-            <div class="post-container">
-                <h1><?php the_title(); ?></h1>
-                <?php the_content('Read more &gt;'); ?>
+            <div class="container">
+                <div class="post-container">
+                    <h1><?php the_title(); ?></h1>
+                    <?php the_content('Read more &gt;'); ?>
+                </div>
             </div>
 
         <?php elseif (is_single()) : /* show post contents */ ?>
 
-            <div class="post-container">
+            <div class="container">
                 <div class="post-header">
                     <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
                     <div class="post-header-text">
                         <h1 class="post-title"><?php the_title(); ?></h1>
-                        <p class="post-tags"><?php echo get_the_tag_list( null, ' / ', null ); ?></p>
                     </div>
                 </div>
-                <div class="post-content">
+                <div class="post-container">
                     <?php the_content('Read more &gt;'); ?>
                 </div>
                 <div class="post-footer">
                     <div class="clearfix"></div>
-                    <p><?php the_date(); ?></p>
+                    <p>posted on: <?php the_date(); ?></p>
+                    <p class="post-tags">Tagged: <?php echo get_the_tag_list( null, ' / ', null ); ?></p>
                     <?php comments_template(null, true); ?>
                 </div>
             </div>
@@ -69,6 +76,12 @@
         <?php endif; /* end if page or post */ ?>
 
     <?php endwhile;/* end the main loop */ ?>
+
+    <?php if (!is_page() && !is_single()) : ?>
+
+        </div>
+
+    <? endif ?>
 
     <?php if (!is_single() && !is_page()) : ?>
 
