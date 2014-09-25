@@ -21,45 +21,46 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
     @panel-text: @text-color;
 
 /* mixins */
-    .panel-style() {
+    .feature-style() {
         font-family: 'Lato', sans-serif;
-        -webkit-transition: all 0.1s ease;
-        -moz-transition: all 0.1s ease;
-        -o-transition: all 0.1s ease;
-        -ms-transition: all 0.1s ease;
-        transition: all 0.1s ease;
+        -webkit-transition: all 0.2s ease;
+        -moz-transition: all 0.2s ease;
+        -o-transition: all 0.2s ease;
+        -ms-transition: all 0.2s ease;
+        transition: all 0.2s ease;
         border-radius: 3px;
         border: 1px solid #fff;
         overflow: hidden;
-        background-color: @panel-bg;
+        background-color: #fff;
         color: @feature-dark;
+    }
+
+    .panel-style() {
+        .feature-style();
 
         &:hover,
         &:focus {
-            -webkit-transform: scale(1.02) rotate(-1deg);
-            -moz-transform:    scale(1.02) rotate(-1deg);
-            -ms-transform:     scale(1.02) rotate(-1deg);
-            -o-transform:      scale(1.02) rotate(-1deg);
-            transform:         scale(1.02) rotate(-1deg);
+            -webkit-transform: scale(1.02);
+            -moz-transform:    scale(1.02);
+            -ms-transform:     scale(1.02);
+            -o-transform:      scale(1.02);
+            transform:         scale(1.02);
             text-decoration: none;
             outline: none;
-            box-shadow: 0 0 15px @secondary-dark;
-            border: 1px solid @feature-dark;
+            background-color: @panel-bg;
         }
 
         &:active,
         &.active {
-            -webkit-transform: scale(1.06) rotate(-1deg);
-            -moz-transform:    scale(1.06) rotate(-1deg);
-            -ms-transform:     scale(1.06) rotate(-1deg);
-            -o-transform:      scale(1.06) rotate(-1deg);
-            transform:         scale(1.06) rotate(-1deg);
+            -webkit-transform: scale(1.06);
+            -moz-transform:    scale(1.06);
+            -ms-transform:     scale(1.06);
+            -o-transform:      scale(1.06);
+            transform:         scale(1.06);
             text-decoration: none;
             outline: none;
             color: @highlight;
             background-color:  @feature-light;
-            box-shadow: 0 0 25px @secondary-dark;
-            border: 1px solid darken(@feature-dark, 20%);
 
             h2 {
                 color: @highlight !important;
@@ -225,14 +226,12 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         padding: 10px;
     }
 
-    .panel {
-        width: 100%;
-        padding: 10px;
-        display: inline-block;
-
-        a {
+    a {
+        &.panel {
             .panel-style();
-            display: block;
+            width: 100%;
+            padding: 10px;
+            display: inline-block;
             text-align: left;
 
             .panel-intro-wrap {
@@ -291,6 +290,66 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
 
         option {
             text-overflow: ellipsis;
+        }
+    }
+
+    .post-nav {
+        a {
+            .feature-style();
+            display: block;
+            position: relative;
+            top: auto;
+            width: 150px;
+            padding: 10px;
+            background-color: @panel-bg;
+
+            &:hover,
+            &:focus {
+                text-decoration: none;
+                outline: none;
+            }
+        }
+
+        &.post-prev {
+            left: 0;
+            text-align: left;
+
+            a {
+                margin-left: -110px;
+
+                &:focus,
+                &:hover {
+                    margin-left: 0;
+                }
+
+                &:after {
+                    content: '<';
+                    width: 50px;
+                    position: absolute;
+                    right: -25px;
+                }
+            }
+        }
+
+        &.post-next {
+            right: 0;
+            text-align: right;
+
+            a {
+                margin-right: -110px;
+
+                &:focus,
+                &:hover {
+                    margin-right: 0;
+                }
+
+                &:after {
+                    content: '>';
+                    width: 50px;
+                    position: absolute;
+                    left: -25px;
+                }
+            }
         }
     }
 
@@ -398,12 +457,19 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
             }
         }
 
-        .panel {
-            width: 46%;
+        a {
+            &.panel {
+                width: 46%;
+            }
         }
 
         .container {
             width: 70%;
+        }
+
+        .post-nav {
+            position: fixed;
+            top: 50%;
         }
     }
 
@@ -412,14 +478,18 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
             width: 60%;
         }
 
-        .panel {
-            width: 33%;
+        a {
+            &.panel {
+                width: 33%;
+            }
         }
     }
 
     @media (min-width: 1600px) {
-        .panel {
-            width: 22%;
+        a {
+            &.panel {
+                width: 22%;
+            }
         }
 }
 

@@ -10,7 +10,7 @@
                 $tags = get_tags();
                 if ($tags) {
                     foreach ($tags as $tag) {
-                        echo '<a class="tag-pill ' . $tag->name . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
+                        echo '<a data-filter="<?= $tag->id ?>" class="tag-pill ' . $tag->name . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
                     }
                 }
             ?>
@@ -37,6 +37,13 @@
 
         <?php elseif (is_single()) : /* show post contents */ ?>
 
+            <div class="post-nav post-prev">
+                <?php previous_post_link('%link', 'Older post'); ?>
+            </div>
+            <div class="post-nav post-next">
+                <?php next_post_link('%link', 'Newer post'); ?>
+            </div>
+
             <div class="container">
                 <div class="post-header">
                     <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
@@ -57,21 +64,19 @@
 
         <?php else : /* show excerpts */ ?>
 
-            <div class="panel <?php foreach (get_the_tags() as $tag) { echo $tag->name . " "; } ?>">
-                <a href="<?php the_permalink() ?>">
-                    <div class="panel-intro-wrap">
-                        <div class="panel-intro">
-                            <h2><?php the_title(); ?></h2>
-                            <div>
-                                <?php the_excerpt(); ?>
-                            </div>
+            <a class="panel <?php foreach (get_the_tags() as $tag) { echo $tag->name . " "; } ?>" href="<?php the_permalink() ?>">
+                <div class="panel-intro-wrap">
+                    <div class="panel-intro">
+                        <h2><?php the_title(); ?></h2>
+                        <div>
+                            <?php the_excerpt(); ?>
                         </div>
                     </div>
-                    <div class="panel-feature-image">
-                        <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
-                    </div>
-                </a>
-            </div>
+                </div>
+                <div class="panel-feature-image">
+                    <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
+                </div>
+            </a>
 
         <?php endif; /* end if page or post */ ?>
 
