@@ -59,7 +59,7 @@
 	  'title_reply'       => __( 'Leave a Comment' ),
 	  'title_reply_to'    => __( 'Leave a Comment to %s' ),
 	  'cancel_reply_link' => __( 'Cancel Comment' ),
-	  'label_submit'      => __( 'Submit Comment' ),
+	  'label_submit'      => __( 'Submit Comment &rarr;' ),
 
 	  'comment_field' =>  '<div class="form-group"><label for="comment">Comment:</label><textarea id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true" placeholder="your comment"></textarea></div>',
 

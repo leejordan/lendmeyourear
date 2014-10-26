@@ -22,8 +22,8 @@
 <body <?php body_class(); ?>>
     <div class="panel-container">
         <div class="header">
-            <a tabindex="2" class="pill pull-right" href="<?php bloginfo('url'); ?>/about">
-                about
+            <a tabindex="2" class="header-link pill pull-right" href="<?php bloginfo('url'); ?>/about">
+                about me
             </a>
             <h1>
                 <a tabindex="1" class="pill" href="<?php bloginfo('url'); ?>">
