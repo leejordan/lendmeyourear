@@ -20,55 +20,33 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-
-    <div class="header">
-        <h1>
-            <a href="<?php bloginfo('url'); ?>">
-                <?php bloginfo('name'); ?>
-                <span class="subheader">
-                    <?php bloginfo('description'); ?>
-                </span>
+    <div class="panel-container">
+        <div class="header">
+            <a tabindex="2" class="pill pull-right" href="<?php bloginfo('url'); ?>/about">
+                about
             </a>
-        </h1>
-        <p>
-            <a href="<?php bloginfo('url'); ?>">home</a> /
-            <a href="<?php bloginfo('url'); ?>/about">about</a> /
-            <a href="<?php bloginfo('url'); ?>/contact">contact</a> /
-            <a href="https://github.com/leejordan/">github</a>
-        </p>
+            <h1>
+                <a tabindex="1" class="pill" href="<?php bloginfo('url'); ?>">
+                    <?php bloginfo('name'); ?>
+                    <span class="subheader">
+                        <?php bloginfo('description'); ?>
+                    </span>
+                </a>
+            </h1>
+        </div>
     </div>
 
-    <?php if (is_single()) : ?>
-        <div class="container">
-            <script>
-                jQuery( document ).ready(function() {
-                    jQuery("#browse-submit").hide();
-                    jQuery("#further-reading #browse").change(function() {
-                        window.location = jQuery("#further-reading select option:selected").val();
-                    })
-                });
-            </script>
-            <?php $currentTitle = get_the_title(); ?>
-            <?php $args = array( 'numberposts' => '100' ); ?>
-            <?php $recent_posts = get_posts( $args ); ?>
-            <form id="further-reading" action="" method="post">
-                <label for="browse" class="sr-only">
-                    Browse posts: 
-                </label>
-                <select name="browse" id="browse">
-                    <?php foreach ($recent_posts as $post) : ?>
-                        <?php if (is_single()) : ?>
-                            <option value="<?php the_permalink(); ?>"
-                                <?php if ($currentTitle === get_the_title()) : ?>
-                                    selected="selected"
-                                <?php endif ?>
-                                >
-                                <?php the_title(); ?>
-                            </option>
-                        <? endif ?>
-                    <? endforeach ?>
-                </select>
-                <input type="submit" value="Go" id="browse-submit" />
-            </form>
+    <?php if (!is_single() && !is_page()) : ?>
+        <div class="panel-container">
+            <hr>
+            <?php
+                $tags = get_tags();
+                if ($tags) {
+                    foreach ($tags as $tag) {
+                        echo '<a tabindex="4" data-filter="<?= $tag->id ?>" class="pill ' . $tag->name . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
+                    }
+                }
+            ?>
+            <hr>
         </div>
     <?php endif ?>

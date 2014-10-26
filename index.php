@@ -3,21 +3,6 @@
 
     <?php /* begin the loop */ if (have_posts()) : ?>
 
-    <?php if (!is_single() && !is_page() && true) : ?>
-
-        <div class="panel-container tags-container">
-            <?php
-                $tags = get_tags();
-                if ($tags) {
-                    foreach ($tags as $tag) {
-                        echo '<a data-filter="<?= $tag->id ?>" class="tag-pill ' . $tag->name . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
-                    }
-                }
-            ?>
-        </div>
-
-    <? endif ?>
-
     <?php if (!is_page() && !is_single()) : ?>
 
         <div class="panel-container">
@@ -28,11 +13,9 @@
 
 		<?php if (is_page()) : /* show page contents */ ?>
 
-            <div class="container">
-                <div class="post-container">
-                    <h1><?php the_title(); ?></h1>
-                    <?php the_content('Read more &gt;'); ?>
-                </div>
+            <div class="post-container">
+                <h1><?php the_title(); ?></h1>
+                <?php the_content('Read more &gt;'); ?>
             </div>
 
         <?php elseif (is_single()) : /* show post contents */ ?>
@@ -44,27 +27,21 @@
                 <?php next_post_link('%link', 'Newer post'); ?>
             </div>
 
-            <div class="container">
-                <div class="post-header">
-                    <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
-                    <div class="post-header-text">
-                        <h1 class="post-title"><?php the_title(); ?></h1>
-                    </div>
-                </div>
-                <div class="post-container">
-                    <?php the_content('Read more &gt;'); ?>
-                </div>
-                <div class="post-footer">
-                    <div class="clearfix"></div>
-                    <p>posted on: <?php the_date(); ?></p>
-                    <p class="post-tags">Tagged: <?php echo get_the_tag_list( null, ' / ', null ); ?></p>
-                    <?php comments_template(null, true); ?>
-                </div>
+            <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
+            <div class="post-container">
+                <h1 class="post-title"><?php the_title(); ?></h1>
+                <?php the_content('Read more &gt;'); ?>
+            </div>
+            <div class="footer-container">
+                <div class="clearfix"></div>
+                <p>Posted on: <?php the_date(); ?>
+                <p>Tagged: <?php echo get_the_tag_list( null, ', ', null ); ?></p>
+                <?php comments_template(null, true); ?>
             </div>
 
         <?php else : /* show excerpts */ ?>
 
-            <a class="panel <?php foreach (get_the_tags() as $tag) { echo $tag->name . " "; } ?>" href="<?php the_permalink() ?>">
+            <a tabindex="3" class="panel" href="<?php the_permalink() ?>" data-tags="<?php foreach (get_the_tags() as $tag) { echo $tag->name . " "; } ?>">
                 <div class="panel-intro-wrap">
                     <div class="panel-intro">
                         <h2><?php the_title(); ?></h2>
@@ -101,7 +78,7 @@
         <h1>Page not found</h1>
 
         <p>Sorry, the page you are looking for is not available. It may have moved, or you may have followed a bad link. Please 
-        <a href="<?php bloginfo('url') ?>">visit our homepage</a> to find what you're looking for.</p>
+        <a href="<?php bloginfo('url') ?>">visit the homepage</a> to find what you're looking for.</p>
 
     </div>
 

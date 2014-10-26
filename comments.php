@@ -28,8 +28,7 @@
 			<ol class="commentlist">
 				<?php
 					/* Loop through and list the comments. */
-					wp_list_comments();
-				?>
+					wp_list_comments('callback=lendComments'); ?>
 			</ol>
 
 <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
@@ -62,7 +61,7 @@
 	  'cancel_reply_link' => __( 'Cancel Comment' ),
 	  'label_submit'      => __( 'Submit Comment' ),
 
-	  'comment_field' =>  '<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="your comment"></textarea>',
+	  'comment_field' =>  '<div class="form-group"><label for="comment">Comment:</label><textarea id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true" placeholder="your comment"></textarea></div>',
 
 	  'must_log_in' => '<p class="must-log-in">' .
 	    sprintf(
@@ -80,23 +79,25 @@
 
 	  'comment_notes_before' => null,
 
-	  'comment_notes_after' => '<p class="form-allowed-tags"><small>wrap any code samples in &lt;pre&gt;</small></p>',
+	  'comment_notes_after' => '<p class="form-allowed-tags"><small>wrap any code samples in &lt;pre class="prettyprint"&gt;...&lt;/pre&gt;</small></p>',
 
 	  'fields' => apply_filters( 'comment_form_default_fields', array(
 
 	    'author' =>
+	      '<div class="form-group">' .
 	      '<p class="comment-form-author">' .
-	      // '<label for="author">' . __( 'Name', 'domainreference' ) . '</label> ' .
-	      // ( $req ? '<span class="required">*</span>' : '' ) .
-	      '<input id="author" placeholder="name" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
-	      '" size="30"' . $aria_req . ' /></p>',
+	      '<label for="author">' . __( 'Name: ', 'domainreference' ) . '</label> ' .
+	      '<input id="author" class="form-control" placeholder="name" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+	      '" size="30"' . $aria_req . ' /></p>' .
+	      '</div>',
 
 	    'email' =>
+	      '<div class="form-group">' .
 	      '<p class="comment-form-email">' .
-	      // '<label for="email">' . __( 'Email', 'domainreference' ) . '</label> ' .
-	      // ( $req ? '<span class="required">*</span>' : '' ) .
-	      '<input id="email" placeholder="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
-	      '" size="30"' . $aria_req . ' /></p>'
+	      '<label for="email">' . __( 'Email address:', 'domainreference' ) . '</label> ' .
+	      '<input id="email" class="form-control" placeholder="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+	      '" size="30"' . $aria_req . ' /></p>' .
+	      '</div>',
 	    )
 	  ),
 	);

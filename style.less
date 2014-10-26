@@ -5,7 +5,7 @@ Description: Lee Jordan's portfolio theme built from near nothing
 Version: 1.0
 Author: Lee Jordan
 Author URI: http://lendmeyourear.net
-Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, threaded-comments, sticky-post
+Tags: white, blue, light
 */
 
 /* variables */
@@ -17,8 +17,10 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
 
     @text-color: #333;
     @text-color-light: lighten(#333, 30%);
-    @panel-bg: @highlight;
-    @panel-text: @text-color;
+
+    @zindex-under: 900;
+    @zindex-default: 1000;
+    @zindex-over: 1100;
 
 /* mixins */
     .feature-style() {
@@ -28,6 +30,7 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         -o-transition: all 0.2s ease;
         -ms-transition: all 0.2s ease;
         transition: all 0.2s ease;
+        z-index: @zindex-under;
         border-radius: 3px;
         border: 1px solid #fff;
         overflow: hidden;
@@ -39,36 +42,48 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         .feature-style();
 
         &:hover,
-        &:focus {
-            -webkit-transform: scale(1.02);
-            -moz-transform:    scale(1.02);
-            -ms-transform:     scale(1.02);
-            -o-transform:      scale(1.02);
-            transform:         scale(1.02);
-            text-decoration: none;
-            outline: none;
-            background-color: @panel-bg;
-        }
-
-        &:active,
+        &:focus,
         &.active {
             -webkit-transform: scale(1.06);
             -moz-transform:    scale(1.06);
             -ms-transform:     scale(1.06);
             -o-transform:      scale(1.06);
             transform:         scale(1.06);
+            z-index: @zindex-over;
             text-decoration: none;
             outline: none;
-            color: @highlight;
+            color: #fff;
             background-color:  @feature-light;
 
             h2 {
-                color: @highlight !important;
+                color: #fff;
             }
 
             p {
-                color: @highlight !important;
+                color: #fff;
             }
+        }
+    }
+
+    .form-style() {
+        padding: 10px;
+        font-family: 'Lato', sans-serif;
+        font-size: 1em;
+        color: @feature-dark;
+        border: 1px solid @feature-light;
+        background-color: #fff;
+
+        &:hover,
+        &:focus {
+            outline: none;
+            border: 1px solid @feature-dark;
+            text-decoration: none;
+            background-color: @highlight;
+            color: darken(@feature-dark, 20%);
+        }
+
+        &[type="submit"] {
+            cursor: pointer;
         }
     }
 
@@ -82,7 +97,7 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
     }
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Lato', sans-serif;
-        padding-top: 1em;
+        padding-top: 0.6em;
         margin-bottom: 0.6em;
     }
     p, ul, ol, pre, blockquote, cite, table { margin-bottom: 0.6em; }
@@ -120,22 +135,7 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
     select,
     input,
     textarea {
-        padding: 10px;
-        font-family: 'Lato', sans-serif;
-        font-size: 1em;
-        color: @feature-dark;
-        border: 1px solid @feature-light;
-        background-color: @panel-bg;
-
-        &:hover,
-        &:focus {
-            outline: none;
-            border: 1px solid @feature-dark;
-        }
-
-        &[type="submit"] {
-            cursor: pointer;
-        }
+        .form-style();
     }
 
     .form-group {
@@ -170,10 +170,12 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
 
     .pull-left {
         float: left;
+        position: relative;
     }
 
     .pull-right {
         float: right;
+        position: relative;
     }
 
     .sr-only {
@@ -187,45 +189,61 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         border: 0;
     }
 
-/* container */
-    .container {
+/* containers */
+    .post-container {
         max-width: 770px;
         width: 95%;
         margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .footer-container {
+        max-width: 770px;
+        width: 95%;
+        border-top: 1px solid @feature-light;
+        border-bottom: 1px solid @feature-light;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        margin: 80px auto 20px;
+        text-align: left;
+    }
+
+    .panel-container {
+        -webkit-backface-visibility: hidden;
+        max-width: 1600px;
+        margin: 20px auto;
+        padding: 0 20px;
     }
 
 /* header */
     .header {
-        font-family: 'Lato', sans-serif;
-        position: relative;
-        margin: 20px 0;
-
+        display: block;
+        text-align: left;
+        margin: 10px 0;
 
         h1 {
-            margin: 0 0 10px 0;
+            display: inline-block;
+            margin: 0;
             padding: 0;
+            font-family: 'Lato', sans-serif;
+
+            .subheader {
+                display: block;
+                color:  @secondary-light;
+            }
 
             a {
                 &:hover,
-                &:focus,
-                &:active {
-                    text-decoration: none;
+                &:focus {
+                    .subheader {
+                        color: #fff;
+                    }
                 }
             }
-        }
-
-        .subheader {
-            color:  @secondary-light;
-            display: block;
         }
     }
 
 /* post panels */
-    .panel-container {
-        -webkit-backface-visibility: hidden;
-        padding: 10px;
-    }
-
     a {
         &.panel {
             .panel-style();
@@ -254,7 +272,7 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
                     p {
                         padding: 0;
                         margin: 14px 0 0;
-                        font-size: 14px;
+                        font-size: 1em;
                         line-height: 18px;
                         color: @text-color;
                     }
@@ -263,16 +281,11 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         }
     }
 
-/* tags */
-    .tags-container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .tag-pill {
+/* pills */
+    .pill {
         .panel-style();
         display: inline-block;
-        padding: 8px;
+        padding: 5px;
     }
 
 /* post image */
@@ -284,29 +297,32 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
 
 /* single */
     #further-reading {
-        margin: 0 auto 10px;
+        margin: 30px auto;
         max-width: 770px;
         width: auto;
 
-        option {
-            text-overflow: ellipsis;
+        select {
+            width:auto;
         }
     }
 
     .post-nav {
+        display: none;
+
         a {
             .feature-style();
+            color: #fff;
             display: block;
             position: relative;
             top: auto;
             width: 150px;
             padding: 10px;
-            background-color: @panel-bg;
+            background-color: @feature-light;
 
             &:hover,
             &:focus {
-                text-decoration: none;
                 outline: none;
+                text-decoration: none;
             }
         }
 
@@ -319,7 +335,7 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
 
                 &:focus,
                 &:hover {
-                    margin-left: 0;
+                    margin-left: -3px;
                 }
 
                 &:after {
@@ -340,7 +356,7 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
 
                 &:focus,
                 &:hover {
-                    margin-right: 0;
+                    margin-right: -3px;
                 }
 
                 &:after {
@@ -353,31 +369,24 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         }
     }
 
-    .post-header {
-        border: 1px solid @highlight;
-
-        .post-header-text {
-            padding: 20px;
-
-            .post-title {
-                padding: 0;
-                margin: 0;
-                color: @text-color;
-            }
-
-            .post-tags {
-                margin-bottom: 0;
-            }
-        }
-    }
-
     .post-container {
-        margin: 60px auto;
         text-align: left;
+
+        .post-title {
+            padding: 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0.6em 0 0.6em -20px;
+        }
 
         p {
             line-height: 1.5em;
             margin-bottom: 2em;
+
+            &:first-of-type {
+                font-size: 1.15em;
+            }
         }
 
         img {
@@ -388,99 +397,46 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
         }
     }
 
-    .post-footer {
-        margin: 30px auto 0;
-
-        .prev,
-        .next {
-            width: 100%;
-            text-align: center;
-        }
-
-        .prev {
-            border-bottom: 1px solid @feature-light;
+/* comments */
+    #comments { text-align: left;}
+    #comments .comment-respond { margin-top: 3em; }
+    ol.commentlist { list-style:none; margin:0; padding: 1em 0; text-indent:0; border-bottom: 1px solid @feature-light;}
+    ol.commentlist li { margin: 0; }
+    ol.commentlist li.comment { margin-top: 6em; }
+    ol.commentlist li.comment .author { font-family: 'Lato', sans-serif; font-weight: bold; margin-bottom: 0.6em;}
+    ol.commentlist li.comment div.reply a { .form-style(); display: inline-block; }
+    ol.commentlist li.comment ul.children { list-style:none; margin:1em 0 0; text-indent:0; }
+    ol.commentlist li.comment ul.children li.comment { padding: 0 0 0 2em; margin-top: 2em; }
+    ol.commentlist li.comment ul.children li.comment .author {
+        &:before {
+            content: "\21B5";
+            position: absolute;
+            left: -2em;
+            color: @secondary-light;
         }
     }
 
-/* comments */
-    #comments { text-align: left; }
-    ol.commentlist { list-style:none; margin:0; padding:0; text-indent:0; }
-    ol.commentlist li { margin: 0; }
-    ol.commentlist li.alt { }
-    ol.commentlist li.bypostauthor {}
-    ol.commentlist li.byuser {}
-    ol.commentlist li.pingback { border: 1px solid @feature-light; padding: 1em; margin: 1em 0; border-radius: 3px;}
-    ol.commentlist li.comment-author-admin {}
-    ol.commentlist li.comment { border: 1px solid @feature-light; padding:1em; margin: 1em 0; border-radius: 3px;}
-    ol.commentlist li.comment:last-child {  }
-    ol.commentlist li.comment div.comment-author {}
-    ol.commentlist li.comment div.vcard { }
-    ol.commentlist li.comment div.vcard cite.fn { }
-    ol.commentlist li.comment div.vcard cite.fn a.url {}
-    ol.commentlist li.comment div.vcard img.avatar { border:2px solid @feature-dark; border-radius: 5px; float:left; margin:0 1em 0 0; }
-    ol.commentlist li.comment div.vcard img.avatar-32 {}
-    ol.commentlist li.comment div.vcard img.photo {}
-    ol.commentlist li.comment div.vcard span.says {}
-    ol.commentlist li.comment div.commentmetadata {margin-bottom: 1em;}
-    ol.commentlist li.comment div.comment-meta {  }
-    ol.commentlist li.comment div.comment-meta a { color:#ccc; }
-    ol.commentlist li.comment p {  }
-    ol.commentlist li.comment ul {  }
-    ol.commentlist li.comment div.reply {  }
-    ol.commentlist li.comment div.reply a { font-weight:bold; }
-    ol.commentlist li.comment ul.children { list-style:none; margin:1em 0 0; text-indent:0; }
-    ol.commentlist li.comment ul.children li {}
-    ol.commentlist li.comment ul.children li.alt {}
-    ol.commentlist li.comment ul.children li.bypostauthor {}
-    ol.commentlist li.comment ul.children li.byuser {}
-    ol.commentlist li.comment ul.children li.comment {}
-    ol.commentlist li.comment ul.children li.comment-author-admin {}
-    ol.commentlist li.comment ul.children li.depth-2 { }
-    ol.commentlist li.comment ul.children li.depth-3 { }
-    ol.commentlist li.comment ul.children li.depth-4 { }
-    ol.commentlist li.comment ul.children li.depth-5 { }
-    ol.commentlist li.comment ul.children li.odd {}
-    ol.commentlist li.even { background: @highlight; }
-    ol.commentlist li.odd { background: darken(@highlight, 5%); }
-    ol.commentlist li.parent { }
-    ol.commentlist li.thread-alt { }
-    ol.commentlist li.thread-even {}
-    ol.commentlist li.thread-odd {}
-
-/* responsiveness */
-    @media (min-width: 768px) {
-        .header {
-            margin: 50px 0 30px;
-
-            .subheader {
-                display: inherit;
-            }
-        }
-
+/* panel responsiveness */
+    @media (min-width: 480px) {
         a {
             &.panel {
-                width: 46%;
+                width: 49%;
             }
         }
+    }
 
-        .container {
-            width: 70%;
-        }
-
-        .post-nav {
-            position: fixed;
-            top: 50%;
+    @media (min-width: 768px) {
+        a {
+            &.panel {
+                width: 32%;
+            }
         }
     }
 
     @media (min-width: 1200px) {
-        .container {
-            width: 60%;
-        }
-
         a {
             &.panel {
-                width: 33%;
+                width: 24%;
             }
         }
     }
@@ -488,9 +444,47 @@ Tags: white, black, light, two-columns, left-sidebar, fixed-width, custom-menu, 
     @media (min-width: 1600px) {
         a {
             &.panel {
-                width: 22%;
+                width: 19%;
             }
         }
-}
+    }
 
+/* general responsiveness */
+    @media (min-width: 768px) {
+        .header {
+            margin: 30px 0;
+
+            h1 {
+                .subheader {
+                    display: inline-block;
+                }
+            }
+        }
+
+        .panel-container {
+            padding: 0 50px;
+        }
+
+        .post-container {
+            width: 70%;
+            padding: 0 50px;
+        }
+
+        .footer-container {
+            width: 70%;
+            padding: 30px 50px;
+        }
+
+        .post-nav {
+            display: block;
+            position: fixed;
+            top: 50%;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .post-container {
+            width: 60%;
+        }
+    }
 
