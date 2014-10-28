@@ -29,7 +29,7 @@
 
             <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
             <div class="post-container">
-                <h1 class="post-title"><?php the_title(); ?></h1>
+                <h1><?php the_title(); ?></h1>
                 <?php the_content('Read more &gt;'); ?>
             </div>
             <div class="footer-container">

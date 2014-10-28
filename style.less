@@ -22,14 +22,10 @@ Tags: white, blue, light
     @zindex-default: 1000;
     @zindex-over: 1100;
 
-/* mixins */
+/* theme mixins */
     .feature-style() {
         font-family: 'Lato', sans-serif;
-        -webkit-transition: all 0.2s ease;
-        -moz-transition: all 0.2s ease;
-        -o-transition: all 0.2s ease;
-        -ms-transition: all 0.2s ease;
-        transition: all 0.2s ease;
+        .transition(all 0.2s ease);
         z-index: @zindex-under;
         border-radius: 3px;
         border: 1px solid #fff;
@@ -44,11 +40,7 @@ Tags: white, blue, light
         &:hover,
         &:focus,
         &.active {
-            -webkit-transform: scale(1.06);
-            -moz-transform:    scale(1.06);
-            -ms-transform:     scale(1.06);
-            -o-transform:      scale(1.06);
-            transform:         scale(1.06);
+            .transform(scale(1.06));
             z-index: @zindex-over;
             text-decoration: none;
             outline: none;
@@ -87,6 +79,50 @@ Tags: white, blue, light
         }
     }
 
+/* button mixins */
+    .button-icon() {
+        &:after {
+            .transition(all 0.2s linear);
+            display: inline-block;
+            font-family: 'Lato', sans-serif;
+            font-size: 1em;
+            color: @secondary-light;
+            padding: 0 0.5em 0 1em;
+        }
+
+        &:hover,
+        &:focus {
+            &:after {
+                color: @feature-dark;
+            }
+        }
+    }
+
+/* helper mixins */
+    .transition(@transition) {
+        -webkit-transition:     @transition;
+        -moz-transition:        @transition;
+        -ms-transition:         @transition;
+        -o-transition:          @transition;
+        transition:             @transition;
+    }
+
+    .transform(@string){
+        -webkit-transform:      @string;
+        -moz-transform:         @string;
+        -ms-transform:          @string;
+        -o-transform:           @string;
+        transform:              @string;
+    }
+
+    .transform-origin(@x:center, @y:center) {
+        -webkit-transform-origin: @x @y;
+        -moz-transform-origin:    @x @y;
+        -ms-transform-origin:     @x @y;
+        -o-transform-origin:      @x @y;
+        transform-origin:         @x @y;
+    }
+
 /* basic reset */
     * {
         margin: 0;
@@ -101,7 +137,14 @@ Tags: white, blue, light
         margin-bottom: 0.6em;
     }
     p, ul, ol, pre, blockquote, cite, table { margin-bottom: 0.6em; }
-    ul, ol, li { margin-left: 0.5em; }
+    ul, ol { 
+        margin-left: 0.5em;
+        margin-bottom: 2em;
+    }
+    li { 
+        margin-left: 0.5em; 
+        margin-bottom: 0.3em;
+    }
 
     body {
         text-align: center;
@@ -109,7 +152,7 @@ Tags: white, blue, light
         color: @text-color;
         background-color: #fff;
         font-size: 1.1em;
-        padding-bottom: 60px;
+        padding-bottom: 5em;
     }
 
 /* links */
@@ -125,6 +168,47 @@ Tags: white, blue, light
         &:active {
             outline: 1px solid @feature-light;
         }
+
+        &.btn {
+            .form-style();
+        }
+
+        &.btn-block {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+
+        &.btn-download {
+            .button-icon();
+
+            &:after {
+                content: "\2192";
+            }
+
+            &:hover,
+            &:focus {
+                &:after {
+                    .transform-origin(60%, 50%);
+                    .transform(rotate(90deg));
+                }
+            }
+        } 
+
+        &.btn-external {
+            .button-icon();
+
+            &:after {
+                content: "\2192";
+            }
+
+            &:hover,
+            &:focus {
+                &:after {
+                    .transform(translateX(0.5em));
+                }
+            }
+        }  
     }
 
     img {
@@ -139,11 +223,11 @@ Tags: white, blue, light
     }
 
     .form-group {
-        margin: 10px 0;
+        margin: 1em 0;
 
         label {
             display: inline-block;
-            margin: 0 0 5px 0;
+            margin: 0 0 0.5em 0;
         }
 
         .form-control {
@@ -153,8 +237,8 @@ Tags: white, blue, light
 
 /* general elements */
     hr {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
         border: 0;
         border-top: 1px solid @feature-light;
         clear: both;
@@ -171,11 +255,19 @@ Tags: white, blue, light
     .pull-left {
         float: left;
         position: relative;
+
+        &.pull-left-buffer {
+            margin: 0 1em 1em 0;
+        }
     }
 
     .pull-right {
         float: right;
         position: relative;
+
+        &.pull-right-buffer {
+            margin: 0 0 1em 1em;
+        }
     }
 
     .sr-only {
@@ -194,7 +286,7 @@ Tags: white, blue, light
         max-width: 770px;
         width: 95%;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 1.5em;
     }
 
     .footer-container {
@@ -289,7 +381,7 @@ Tags: white, blue, light
     .pill {
         .panel-style();
         display: inline-block;
-        padding: 5px;
+        padding: 0.3em;
     }
 
 /* post image */
@@ -299,7 +391,15 @@ Tags: white, blue, light
         height: auto;
     }
 
-/* single */
+/* post layout helpers */
+    .link-panel {
+        text-align: center;
+        width: 100%;
+        margin: 1em 0;
+        float: none;
+    }
+
+/* post content */
     #further-reading {
         margin: 30px auto;
         max-width: 770px;
@@ -376,10 +476,6 @@ Tags: white, blue, light
     .post-container {
         text-align: left;
 
-        .post-title {
-            padding: 0;
-        }
-
         h1, h2, h3, h4, h5, h6 {
             margin: 0.6em 0 0.6em -20px;
         }
@@ -400,6 +496,51 @@ Tags: white, blue, light
             margin: 30px auto;
         }
     }
+
+/* bootstrap embed-responsive */
+    .embed-responsive {
+        position: relative;
+        display: block;
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+        margin-bottom: 2em;
+
+        .embed-responsive-item,
+        iframe,
+        embed,
+        object,
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            border: 0;
+        }
+
+        &.embed-border {
+            border: 1px solid @feature-light;
+        }
+
+        // Modifier class for 16:9 aspect ratio
+        &.embed-responsive-16by9 {
+            padding-bottom: 56.25%;
+        }
+
+        // Modifier class for 4:3 aspect ratio
+        &.embed-responsive-4by3 {
+            padding-bottom: 75%;
+        }
+
+        // Modifier class for 4:3 aspect ratio
+        &.embed-responsive-square {
+            padding-bottom: 100%;
+        }
+    }
+
+    
 
 /* comments */
     #comments { text-align: left;}
@@ -483,6 +624,17 @@ Tags: white, blue, light
             display: block;
             position: fixed;
             top: 40%;
+        }
+
+        .link-panel {
+            width: 50%;
+            float: left;
+            margin: 1em 1em 1em 0;
+
+            &.link-panel-right {
+                float: right;
+                margin: 1em 0 1em 1em;
+            }
         }
     }
 

@@ -22,9 +22,6 @@
 <body <?php body_class(); ?>>
     <div class="panel-container">
         <div class="header">
-            <a tabindex="2" class="header-link pill pull-right" href="<?php bloginfo('url'); ?>/about">
-                about me
-            </a>
             <h1>
                 <a tabindex="1" class="pill" href="<?php bloginfo('url'); ?>">
                     <?php bloginfo('name'); ?>
@@ -33,6 +30,9 @@
                     </span>
                 </a>
             </h1>
+            <a tabindex="2" class="header-link pill pull-right pull-right-buffer" href="<?php bloginfo('url'); ?>/about">
+                about me
+            </a>
         </div>
     </div>
 
