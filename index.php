@@ -39,15 +39,12 @@
                 <?php comments_template(null, true); ?>
             </div>
 
-        <?php else : /* show excerpts */ ?>
+        <?php else : /* show post titles */ ?>
 
             <a tabindex="3" class="panel" href="<?php the_permalink() ?>" data-tags="<?php foreach (get_the_tags() as $tag) { echo $tag->name . " "; } ?>">
                 <div class="panel-intro-wrap">
                     <div class="panel-intro">
                         <h2><?php the_title(); ?></h2>
-                        <div>
-                            <?php the_excerpt(); ?>
-                        </div>
                     </div>
                 </div>
                 <div class="panel-feature-image">

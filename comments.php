@@ -28,7 +28,7 @@
 			<ol class="commentlist">
 				<?php
 					/* Loop through and list the comments. */
-					wp_list_comments('callback=lendComments'); ?>
+					wp_list_comments('callback=themeComments'); ?>
 			</ol>
 
 <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
@@ -59,7 +59,7 @@
 	  'title_reply'       => __( 'Leave a Comment' ),
 	  'title_reply_to'    => __( 'Leave a Comment to %s' ),
 	  'cancel_reply_link' => __( 'Cancel Comment' ),
-	  'label_submit'      => __( 'Submit Comment &rarr;' ),
+	  'label_submit'      => __( 'Submit Comment' ),
 
 	  'comment_field' =>  '<div class="form-group"><label for="comment">Comment:</label><textarea id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true" placeholder="your comment"></textarea></div>',
 

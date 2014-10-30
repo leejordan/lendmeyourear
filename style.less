@@ -9,8 +9,10 @@ Tags: white, blue, light
 */
 
 /* variables */
+    @feature-light: darken(#91D9F9, 10%);
     @feature-dark: #00b5e9;
-    @feature-light: #91D9F9;
+    @feature-darker: darken(@feature-dark, 10%);
+
     @highlight: #F4F4F7;
     @secondary-light: #D8D4D5;
     @secondary-dark: #9B9B9B;
@@ -57,8 +59,23 @@ Tags: white, blue, light
         }
     }
 
+    .button-style() {
+        .feature-style();
+        color: #fff;
+        display: block;
+        padding: 0.6em;
+        background-color: @feature-light;
+
+        &:hover,
+        &:focus {
+            outline: none;
+            text-decoration: none;
+            background-color: @feature-darker;
+        }
+    }
+
     .form-style() {
-        padding: 10px;
+        padding: 0.6em;
         font-family: 'Lato', sans-serif;
         font-size: 1em;
         color: @feature-dark;
@@ -75,25 +92,77 @@ Tags: white, blue, light
         }
 
         &[type="submit"] {
+            .button-style();
             cursor: pointer;
         }
     }
 
 /* button mixins */
     .button-icon() {
+        padding: 0.6em 2em;
+
         &:after {
             .transition(all 0.2s linear);
+            position: absolute;
+            right: 0.6em;
+            top: 0.6em;
             display: inline-block;
             font-family: 'Lato', sans-serif;
             font-size: 1em;
-            color: @secondary-light;
-            padding: 0 0.5em 0 1em;
+            color: @feature-light;
         }
 
         &:hover,
         &:focus {
             &:after {
-                color: @feature-dark;
+                color: #fff;
+            }
+        }
+    }
+
+    .button-reply() {
+        .button-icon();
+
+        &:after {
+            content: "\21B5";
+            .transform(rotate(-90deg));
+        }
+
+        &:hover,
+        &:focus {
+            &:after {
+                .transform(rotate(0deg));
+            }
+        }
+    }
+
+    .button-download() {
+        .button-icon();
+
+        &:after {
+            content: "\2192";
+        }
+
+        &:hover,
+        &:focus {
+            &:after {
+                .transform(rotate(90deg));
+                border-right: 1px solid #fff;
+            }
+        }
+    }
+
+    .button-external() {
+        .button-icon();
+
+        &:after {
+            content: "\2192";
+        }
+
+        &:hover,
+        &:focus {
+            &:after {
+                .transform(rotate(-45deg));
             }
         }
     }
@@ -170,7 +239,7 @@ Tags: white, blue, light
         }
 
         &.btn {
-            .form-style();
+            .button-style();
         }
 
         &.btn-block {
@@ -180,35 +249,12 @@ Tags: white, blue, light
         }
 
         &.btn-download {
-            .button-icon();
-
-            &:after {
-                content: "\2192";
-            }
-
-            &:hover,
-            &:focus {
-                &:after {
-                    .transform-origin(60%, 50%);
-                    .transform(rotate(90deg));
-                }
-            }
+            .button-download();
         } 
 
         &.btn-external {
-            .button-icon();
-
-            &:after {
-                content: "\2192";
-            }
-
-            &:hover,
-            &:focus {
-                &:after {
-                    .transform(translateX(0.5em));
-                }
-            }
-        }  
+            .button-external();
+        }
     }
 
     img {
@@ -294,9 +340,9 @@ Tags: white, blue, light
         width: 95%;
         border-top: 1px solid @feature-light;
         border-bottom: 1px solid @feature-light;
-        padding-top: 30px;
-        padding-bottom: 30px;
-        margin: 80px auto 20px;
+        padding-top: 2em;
+        padding-bottom: 2em;
+        margin: 5em auto 1em;
         text-align: left;
     }
 
@@ -304,14 +350,14 @@ Tags: white, blue, light
         -webkit-backface-visibility: hidden;
         max-width: 1600px;
         margin: 20px auto;
-        padding: 0 20px;
+        padding: 0 1em;
     }
 
 /* header */
     .header {
         display: block;
         text-align: left;
-        margin: 10px 0;
+        margin: 1em 0;
 
         h1 {
             display: inline-block;
@@ -335,7 +381,7 @@ Tags: white, blue, light
         }
 
         .header-link {
-            margin-top: 12px;
+            margin-top: 1em;
         }
     }
 
@@ -344,15 +390,15 @@ Tags: white, blue, light
         &.panel {
             .panel-style();
             width: 100%;
-            padding: 10px;
+            padding: 1em;
             display: inline-block;
             text-align: left;
 
             .panel-intro-wrap {
                 display: table;
                 table-layout: fixed;
-                height: 120px;
-                padding: 20px;
+                height: 140px;
+                padding: 0.6em;
 
                 .panel-intro {
                     display: table-cell;
@@ -363,13 +409,14 @@ Tags: white, blue, light
                         padding: 0;
                         margin: 0;
                         font-weight: normal;
+                        font-size: 1.3em;
                     }
 
                     p {
                         padding: 0;
-                        margin: 14px 0 0;
+                        margin: 1em 0 0;
                         font-size: 1em;
-                        line-height: 18px;
+                        line-height: 1em;
                         color: @text-color;
                     }
                 }
@@ -393,20 +440,30 @@ Tags: white, blue, light
 
 /* post layout helpers */
     .link-panel {
+        background-color: @highlight;
         text-align: center;
         width: 100%;
         margin: 1em 0;
+        padding: 1em;
         float: none;
+
+        p {
+            margin: 0 0 0.5em 0!important;
+        }
+
+        .btn-wrap {
+            position: relative;
+            margin: 0 0 0.5em 0;
+        }
     }
 
 /* post content */
     #further-reading {
-        margin: 30px auto;
+        margin: 2em auto;
         max-width: 770px;
-        width: auto;
 
         select {
-            width:auto;
+            width: 60%;
         }
     }
 
@@ -414,20 +471,10 @@ Tags: white, blue, light
         display: none;
 
         a {
-            .feature-style();
-            color: #fff;
-            display: block;
+            .button-style();
             position: relative;
             top: auto;
             width: 150px;
-            padding: 10px;
-            background-color: @feature-light;
-
-            &:hover,
-            &:focus {
-                outline: none;
-                text-decoration: none;
-            }
         }
 
         &.post-prev {
@@ -443,7 +490,7 @@ Tags: white, blue, light
                 }
 
                 &:after {
-                    content: '<';
+                    content: '\003C';
                     width: 50px;
                     position: absolute;
                     right: -25px;
@@ -464,7 +511,7 @@ Tags: white, blue, light
                 }
 
                 &:after {
-                    content: '>';
+                    content: '\003E';
                     width: 50px;
                     position: absolute;
                     left: -25px;
@@ -475,10 +522,6 @@ Tags: white, blue, light
 
     .post-container {
         text-align: left;
-
-        h1, h2, h3, h4, h5, h6 {
-            margin: 0.6em 0 0.6em -20px;
-        }
 
         p {
             line-height: 1.5em;
@@ -540,8 +583,6 @@ Tags: white, blue, light
         }
     }
 
-    
-
 /* comments */
     #comments { text-align: left;}
     #comments .comment-respond { margin-top: 3em; }
@@ -549,7 +590,10 @@ Tags: white, blue, light
     ol.commentlist li { margin: 0; }
     ol.commentlist li.comment { margin-top: 6em; }
     ol.commentlist li.comment .author { font-family: 'Lato', sans-serif; font-weight: bold; margin-bottom: 0.6em;}
-    ol.commentlist li.comment div.reply a { .form-style(); display: inline-block; }
+    ol.commentlist li.comment div.reply a {
+        .button-style();
+        .button-reply();
+    }
     ol.commentlist li.comment ul.children { list-style:none; margin:1em 0 0; text-indent:0; }
     ol.commentlist li.comment ul.children li.comment { padding: 0 0 0 2em; margin-top: 2em; }
     ol.commentlist li.comment ul.children li.comment .author {
@@ -595,9 +639,16 @@ Tags: white, blue, light
     }
 
 /* general responsiveness */
-    @media (min-width: 768px) {
+
+    @media (min-width: 480px) {
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0.6em 0 0.6em -20px;
+        }
+    }
+
+    @media (min-width: 769px) {
         .header {
-            margin: 30px 0;
+            margin: 2em 0;
 
             h1 {
                 .subheader {
@@ -607,17 +658,17 @@ Tags: white, blue, light
         }
 
         .panel-container {
-            padding: 0 50px;
+            padding: 0 3em;
         }
 
         .post-container {
             width: 70%;
-            padding: 0 50px;
+            padding: 0 3em;
         }
 
         .footer-container {
             width: 70%;
-            padding: 30px 50px;
+            padding: 3em;
         }
 
         .post-nav {
