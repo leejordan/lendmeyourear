@@ -61,8 +61,9 @@ Tags: white, blue, light
 
     .button-style() {
         .feature-style();
+        .transition(all 0.2s ease);
         color: #fff;
-        display: block;
+        display: inline-block;
         padding: 0.6em;
         background-color: @feature-light;
 
@@ -101,8 +102,9 @@ Tags: white, blue, light
     .button-icon() {
         padding: 0.6em 2em;
 
+        &:before,
         &:after {
-            .transition(all 0.2s linear);
+            .transition(all 0.2s ease);
             position: absolute;
             right: 0.6em;
             top: 0.6em;
@@ -112,8 +114,13 @@ Tags: white, blue, light
             color: @feature-light;
         }
 
+        &:before {
+            right: 1em;
+        }
+
         &:hover,
         &:focus {
+            &:before,
             &:after {
                 color: #fff;
             }
@@ -167,6 +174,42 @@ Tags: white, blue, light
         }
     }
 
+    .button-submit() {
+        .button-icon();
+
+        &:after {
+            content: "\00BB";
+            .transform(translateX(-0.2em) translateY(-0.1em) scale(1.4));
+        }
+
+        &:hover,
+        &:focus {
+            &:after {
+                .transform(translateX(0em) translateY(-0.1em) scale(1.4));
+            }
+        }
+    }
+
+    .button-code {
+        .button-icon();
+
+        &:before {
+            content: "\003E";
+        }
+
+        &:after {
+            .transition(none);
+            content: "\005F";
+        }
+
+        &:hover,
+        &:focus {
+            &:after {
+                .animation(blink 1s infinite normal linear);
+            }
+        }
+    }
+
 /* helper mixins */
     .transition(@transition) {
         -webkit-transition:     @transition;
@@ -190,6 +233,24 @@ Tags: white, blue, light
         -ms-transform-origin:     @x @y;
         -o-transform-origin:      @x @y;
         transform-origin:         @x @y;
+    }
+
+    .animation(@animation) {
+        -webkit-animation:      @animation;
+        -moz-animation:         @animation;
+        -ms-animation:          @animation;
+        animation:              @animation;
+    }
+
+/* animations */
+    @-webkit-keyframes blink {
+        1%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+    }
+
+    @keyframes blink {
+        0%, 50% { opacity: 0; }
+        51%, 100% { opacity: 1; }
     }
 
 /* basic reset */
@@ -225,7 +286,11 @@ Tags: white, blue, light
     }
 
 /* links */
-    a {
+    a,
+    button {
+        position: relative;
+        font-size: 1em;
+        cursor: pointer;
         text-decoration: none;
         color: @feature-dark;
 
@@ -255,6 +320,14 @@ Tags: white, blue, light
         &.btn-external {
             .button-external();
         }
+
+        &.btn-submit {
+            .button-submit();
+        }
+
+        &.btn-code {
+            .button-code();
+        }
     }
 
     img {
@@ -269,6 +342,7 @@ Tags: white, blue, light
     }
 
     .form-group {
+        position: relative;
         margin: 1em 0;
 
         label {
@@ -300,7 +374,6 @@ Tags: white, blue, light
 
     .pull-left {
         float: left;
-        position: relative;
 
         &.pull-left-buffer {
             margin: 0 1em 1em 0;
@@ -356,11 +429,14 @@ Tags: white, blue, light
 /* header */
     .header {
         display: block;
+        clear: both;
+        position: relative;
         text-align: left;
         margin: 1em 0;
 
         h1 {
             display: inline-block;
+            float: left;
             margin: 0;
             padding: 0;
             font-family: 'Lato', sans-serif;
@@ -380,8 +456,11 @@ Tags: white, blue, light
             }
         }
 
-        .header-link {
-            margin-top: 1em;
+        .header-link-section {
+            position: relative;
+            float: left;
+            clear: both;
+            margin-top: 0;
         }
     }
 
@@ -451,8 +530,11 @@ Tags: white, blue, light
             margin: 0 0 0.5em 0!important;
         }
 
-        .btn-wrap {
-            position: relative;
+        br {
+            display: none;
+        }
+
+        .btn {
             margin: 0 0 0.5em 0;
         }
     }
@@ -472,9 +554,14 @@ Tags: white, blue, light
 
         a {
             .button-style();
+            .transition(all 0.4s ease);
             position: relative;
             top: auto;
             width: 150px;
+
+            &:after {
+                .transition(all 0.6s ease);
+            }
         }
 
         &.post-prev {
@@ -484,16 +571,20 @@ Tags: white, blue, light
             a {
                 margin-left: -110px;
 
-                &:focus,
-                &:hover {
-                    margin-left: -3px;
-                }
-
                 &:after {
-                    content: '\003C';
+                    content: '\2190';
                     width: 50px;
                     position: absolute;
                     right: -25px;
+                }
+
+                &:focus,
+                &:hover {
+                    margin-left: -3px;
+
+                    &:after {
+                        .transform(translateX(-0.8em));
+                    }
                 }
             }
         }
@@ -505,16 +596,20 @@ Tags: white, blue, light
             a {
                 margin-right: -110px;
 
-                &:focus,
-                &:hover {
-                    margin-right: -3px;
-                }
-
                 &:after {
-                    content: '\003E';
+                    content: '\2192';
                     width: 50px;
                     position: absolute;
                     left: -25px;
+                }
+
+                &:focus,
+                &:hover {
+                    margin-right: -3px;
+
+                    &:after {
+                        .transform(translateX(0.8em));
+                    }
                 }
             }
         }
@@ -585,6 +680,11 @@ Tags: white, blue, light
 
 /* comments */
     #comments { text-align: left;}
+    #comments { 
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0.6em 0;
+        }
+    }
     #comments .comment-respond { margin-top: 3em; }
     ol.commentlist { list-style:none; margin:0; padding: 1em 0; text-indent:0; border-bottom: 1px solid @feature-light;}
     ol.commentlist li { margin: 0; }
@@ -644,6 +744,14 @@ Tags: white, blue, light
         h1, h2, h3, h4, h5, h6 {
             margin: 0.6em 0 0.6em -20px;
         }
+
+        .header {
+            .header-link-section {
+                float: right;
+                clear: none;
+                margin-top: 1em;
+            }
+        }
     }
 
     @media (min-width: 769px) {
@@ -680,11 +788,11 @@ Tags: white, blue, light
         .link-panel {
             width: 50%;
             float: left;
-            margin: 1em 1em 1em 0;
+            margin: 0 1em 1em 0;
 
             &.link-panel-right {
                 float: right;
-                margin: 1em 0 1em 1em;
+                margin: 0 0 1em 1em;
             }
         }
     }

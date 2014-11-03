@@ -30,9 +30,12 @@
                     </span>
                 </a>
             </h1>
-            <a tabindex="2" class="header-link pill pull-right pull-right-buffer" href="<?php bloginfo('url'); ?>/about">
-                about me
-            </a>
+            <div class="header-link-section">
+                <a tabindex="2" class="pill" href="<?php bloginfo('url'); ?>/about">
+                    about me
+                </a>
+            </div>
+             <div class="clearfix"></div>
         </div>
     </div>
 
