@@ -16,7 +16,7 @@ function themeComments($comment, $args, $depth) {
                     <?php printf(__('%1$s'), get_comment_date()) ?>
                 </a>
             </div>
-            <div class="pull-left">
+            <div class="pull-left author-wrap">
                 <?php printf(__('<p class="author">%s</p>'), get_comment_author_link()) ?>
             </div>
             <hr>
