@@ -31,9 +31,7 @@
                 </a>
             </h1>
             <div class="header-link-section">
-                <a tabindex="2" class="pill" href="<?php bloginfo('url'); ?>/about">
-                    about me
-                </a>
+                <?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
             </div>
              <div class="clearfix"></div>
         </div>

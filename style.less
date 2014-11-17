@@ -59,6 +59,12 @@ Tags: white, blue, light
         }
     }
 
+    .pill-style() {
+        .panel-style();
+        display: inline-block;
+        padding: 5px;
+    }
+
     .button-style() {
         .feature-style();
         .transition(all 0.2s ease);
@@ -464,6 +470,22 @@ Tags: white, blue, light
             float: left;
             clear: both;
             margin-top: 0;
+
+            ul {
+                display: inline-block;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    margin: 0;
+                    float: left;
+
+                    a {
+                        .pill();
+                    }
+                }
+            }
         }
     }
 
@@ -508,9 +530,7 @@ Tags: white, blue, light
 
 /* pills */
     .pill {
-        .panel-style();
-        display: inline-block;
-        padding: 5px;
+        .pill-style();
     }
 
 /* post image */
