@@ -27,8 +27,9 @@
                 <?php next_post_link('%link', 'Newer post'); ?>
             </div>
 
-            <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
+            <?php if ( has_post_thumbnail() && !get_post_meta($post->ID, 'custom-header', true) ) the_post_thumbnail('large'); ?>
             <div class="post-container">
+                <?php echo get_post_meta($post->ID, 'custom-header', true) ?>
                 <h1><?php the_title(); ?></h1>
                 <?php the_content('Read more &gt;'); ?>
             </div>

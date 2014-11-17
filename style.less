@@ -271,6 +271,9 @@ Tags: white, blue, light
         margin-left: 0.5em;
         margin-bottom: 2em;
     }
+    p {
+        line-height: 1.5em;
+    }
     li { 
         margin-left: 0.5em; 
         margin-bottom: 0.3em;
@@ -507,7 +510,7 @@ Tags: white, blue, light
     .pill {
         .panel-style();
         display: inline-block;
-        padding: 0.3em;
+        padding: 5px;
     }
 
 /* post image */
@@ -619,7 +622,6 @@ Tags: white, blue, light
         text-align: left;
 
         p {
-            line-height: 1.5em;
             margin-bottom: 2em;
 
             &:first-of-type {
@@ -722,7 +724,7 @@ Tags: white, blue, light
                         text-indent:0;
 
                         li.comment {
-                            padding: 0 0 0 1em;
+                            margin-left: 1em;
                             margin-top: 2em;
 
                             .author-wrap {
@@ -732,10 +734,46 @@ Tags: white, blue, light
                                     &:before {
                                         content: "\21B5";
                                         color: @secondary-light;
-                                        margin-right: 0.6em;;
+                                        margin-right: 0.6em;
                                     }
                                 }
                             }
+                        }
+                    }
+                }
+
+                &.comment {
+                    border-top: 1px solid @feature-light;
+                    padding-top: 0.6em;
+                }
+
+                &.pingback,
+                &.trackback {
+                    margin-top: 6em;
+                    padding: 0.6em;
+                    background-color: @highlight;
+
+                    & + .pingback,
+                    & + .trackback {
+                        margin-top: 0.6em;
+                    }
+
+                    .author {
+                        margin: 0;
+                    }
+
+                    .date-wrap,
+                    .comment-body-wrap {
+                        display: none;
+                    }
+                }
+
+                &.pingback,
+                &.trackback {
+                    .author {
+                        &:before {
+                            content: "Linked from: ";
+                            margin-right: 0.6em;
                         }
                     }
                 }
