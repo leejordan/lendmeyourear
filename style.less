@@ -553,6 +553,10 @@ Tags: white, blue, light
         padding: 1em;
         float: none;
 
+        .link-panel-header {
+            font-family: 'Lato', sans-serif;
+        }
+
         p {
             margin: 0 0 0.5em 0!important;
         }
@@ -712,6 +716,11 @@ Tags: white, blue, light
             margin: 0.6em 0;
         }
 
+        .comments-header {
+            margin-top: 3em;
+            margin-bottom: 0.6em;
+        }
+
         .comment-respond {
             margin-top: 3em;
         }
@@ -729,7 +738,9 @@ Tags: white, blue, light
                 &.comment,
                 &.pingback,
                 &.trackback {
-                    margin-top: 6em;
+                    &:not(:first-of-type){
+                        margin-top: 6em;
+                    }
 
                     .author {
                         font-family: 'Lato', sans-serif;

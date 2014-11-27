@@ -18,6 +18,8 @@
 
 <?php if ( have_comments() ) : ?>
 
+<?php echo "<h3 class='comments-header'>Comments</h3>"; ?>
+
 <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 			<div class="navigation">
 				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments' ) ); ?></div>
