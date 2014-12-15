@@ -30,6 +30,7 @@
             <?php if ( has_post_thumbnail() && !get_post_meta($post->ID, 'custom-header', true) ) the_post_thumbnail('large'); ?>
             <div class="post-container">
                 <?php echo get_post_meta($post->ID, 'custom-header', true) ?>
+                <?php echo get_post_meta($post->ID, 'custom-markup', true) ?>
                 <h1><?php the_title(); ?></h1>
                 <?php the_content('Read more &gt;'); ?>
             </div>
