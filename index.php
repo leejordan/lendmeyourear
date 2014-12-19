@@ -72,12 +72,12 @@
 
     <?php else : /* show page not found message */ ?>
 
-    <div class="pagecontent pagenotfound">
+    <div class="post-container">
 
         <h1>Page not found</h1>
 
-        <p>Sorry, the page you are looking for is not available. It may have moved, or you may have followed a bad link. Please 
-        <a href="<?php bloginfo('url') ?>">visit the homepage</a> to find what you're looking for.</p>
+        <p>Sorry, the page you are looking for is not available. Maybe it moved. Maybe it was never here in the first place. Maybe you imagined the whole thing.</p>
+        <p><a class="btn btn-external" href="<?php bloginfo('url') ?>">take me to the homepage</a></p>
 
     </div>
 

@@ -37,17 +37,19 @@
         </div>
     </div>
 
-    <?php if (!is_single() && !is_page()) : ?>
-        <div class="panel-container">
-            <hr>
-            <?php
-                $tags = get_tags();
-                if ($tags) {
-                    foreach ($tags as $tag) {
-                        echo '<a tabindex="4" data-filter="<?= $tag->id ?>" class="pill ' . $tag->name . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
+    <?php /* begin the loop */ if (have_posts()) : ?>
+        <?php if (!is_single() && !is_page()) : ?>
+            <div class="panel-container">
+                <hr>
+                <?php
+                    $tags = get_tags();
+                    if ($tags) {
+                        foreach ($tags as $tag) {
+                            echo '<a tabindex="4" data-filter="<?= $tag->id ?>" class="pill ' . $tag->name . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
+                        }
                     }
-                }
-            ?>
-            <hr>
-        </div>
+                ?>
+                <hr>
+            </div>
+        <?php endif ?>
     <?php endif ?>
