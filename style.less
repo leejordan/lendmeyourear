@@ -24,6 +24,8 @@ Tags: white, blue, light
     @zindex-default: 1000;
     @zindex-over: 1100;
 
+    @max-width: 770px;
+
 /* theme mixins */
     .feature-style() {
         font-family: 'Lato', sans-serif;
@@ -335,7 +337,7 @@ Tags: white, blue, light
 
         &.btn-download {
             .button-download();
-        } 
+        }
 
         &.btn-external {
             .button-external();
@@ -420,22 +422,17 @@ Tags: white, blue, light
     }
 
 /* containers */
-    .post-container {
-        max-width: 770px;
+    .post-container,
+    .footer-container {
+        max-width: @max-width;
         width: 100%;
-        margin: 0 auto;
         padding: 0 1em;
+        margin: 0 auto;
+        text-align: left;
     }
 
     .footer-container {
-        max-width: 770px;
-        width: 95%;
-        border-top: 1px solid @feature-light;
-        border-bottom: 1px solid @feature-light;
-        padding-top: 2em;
-        padding-bottom: 2em;
         margin: 5em auto 1em;
-        text-align: left;
     }
 
     .panel-container {
@@ -582,11 +579,10 @@ Tags: white, blue, light
 
 /* post content */
     #further-reading {
-        margin: 2em auto;
-        max-width: 770px;
+        max-width: @max-width;
 
         select {
-            width: 60%;
+            width: 100%;
         }
     }
 
@@ -657,8 +653,6 @@ Tags: white, blue, light
     }
 
     .post-container {
-        text-align: left;
-
         p {
             margin-bottom: 2em;
 
@@ -676,7 +670,14 @@ Tags: white, blue, light
             max-width: 100%;
             width: auto;
             height: auto;
-            margin: 30px auto;
+            margin: 2em auto;
+
+            .pull-left,
+            .pull-right,
+            .alignleft,
+            .alignright {
+                margin: 0 auto;
+            }
         }
 
         @media (max-width: 480px) {
@@ -877,10 +878,6 @@ Tags: white, blue, light
 /* general responsiveness */
 
     @media (min-width: 480px) {
-        h1, h2, h3, h4, h5, h6 {
-            margin: 0.6em 0 0.6em -20px;
-        }
-
         .header {
             .header-link-section {
                 float: right;
@@ -888,9 +885,19 @@ Tags: white, blue, light
                 margin-top: 1em;
             }
         }
+
+        .panel-container,
+        .post-container,
+        .footer-container {
+            padding: 0 3em;
+        }
     }
 
     @media (min-width: 769px) {
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0.6em 0 0.6em -20px;
+        }
+
         .header {
             margin: 2em 0;
 
@@ -901,18 +908,9 @@ Tags: white, blue, light
             }
         }
 
-        .panel-container {
-            padding: 0 3em;
-        }
-
-        .post-container {
-            width: 70%;
-            padding: 0 3em;
-        }
-
+        .post-container,
         .footer-container {
             width: 70%;
-            padding: 3em;
         }
 
         .post-nav {
@@ -934,7 +932,8 @@ Tags: white, blue, light
     }
 
     @media (min-width: 1200px) {
-        .post-container {
+        .post-container,
+        .footer-container {
             width: 60%;
         }
     }
