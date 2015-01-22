@@ -294,7 +294,7 @@ Tags: white, blue, light
     }
     li {
         margin-left: 0.5em;
-        margin-bottom: 1em;
+        margin-bottom: 0.6em;
     }
 
     body {
@@ -407,6 +407,12 @@ Tags: white, blue, light
         &.pull-right-buffer {
             margin: 0 0 1em 1em;
         }
+    }
+
+    .center,
+    .aligncenter {
+        display: block;
+        margin: 1em auto;
     }
 
     .sr-only {
@@ -665,7 +671,29 @@ Tags: white, blue, light
             color: @feature-darker;
         }
 
+        blockquote {
+            margin-bottom: 3em;
+            padding-left: 1em;
+            border-left: 1px solid @text-color-light;
+            color: @text-color-light;
+            font-style: italic;
+
+            cite {
+                margin-bottom: 2em;
+                float: right;
+                display: inline;
+            }
+        }
+
+        cite {
+            display: block;
+            width: 100%;
+            text-align: right;
+            color: @text-color;
+        }
+
         img {
+            display: block;
             max-width: 100%;
             width: auto;
             height: auto;
@@ -686,7 +714,7 @@ Tags: white, blue, light
                 max-width: 100%;
                 width: 100%;
                 height: auto;
-                margin: 2em auto;
+                margin: 0 auto 1em;
             }
         }
     }
