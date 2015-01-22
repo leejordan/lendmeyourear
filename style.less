@@ -1,7 +1,7 @@
 /*
 Theme Name: Lend me your ear
 Theme URI:
-Description: Lee Jordan's portfolio theme built from near nothing
+Description: A lightweight portfolio theme
 Version: 1.0
 Author: Lee Jordan
 Author URI: http://lendmeyourear.net
@@ -9,7 +9,7 @@ Tags: white, blue, light
 */
 
 /* variables */
-    @feature-light: darken(#91D9F9, 10%);
+    @feature-light: #61c8f6;
     @feature-dark: #00b5e9;
     @feature-darker: darken(@feature-dark, 10%);
 
@@ -32,7 +32,6 @@ Tags: white, blue, light
         .transition(all 0.2s ease);
         z-index: @zindex-under;
         border-radius: 3px;
-        border: 1px solid #fff;
         overflow: hidden;
         background-color: #fff;
         color: @feature-dark;
@@ -379,8 +378,8 @@ Tags: white, blue, light
 
 /* general elements */
     hr {
-        margin-top: 1.5em;
-        margin-bottom: 1.5em;
+        margin-top: 0.6em;
+        margin-bottom: 0.6em;
         border: 0;
         border-top: 1px solid @feature-light;
         clear: both;
@@ -687,6 +686,7 @@ Tags: white, blue, light
                 max-width: 100%;
                 width: 100%;
                 height: auto;
+                margin: 2em auto;
             }
         }
     }

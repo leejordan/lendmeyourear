@@ -45,7 +45,7 @@
                     $tags = get_tags();
                     if ($tags) {
                         foreach ($tags as $tag) {
-                            echo '<a tabindex="4" data-filter="<?= $tag->id ?>" class="pill ' . $tag->name . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
+                            echo '<a tabindex="4" data-filter="' . $tag->name . '" class="pill' . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
                         }
                     }
                 ?>
