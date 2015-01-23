@@ -108,8 +108,8 @@
 
 <?php if(postHasComments('pingback', get_the_ID())) : ?>
 
-	<h3 class='comments-header'>This post is linked to from the following places</h3>
-	<ol class="commentlist">
+	<ol class="commentlist pingbacklist">
+		<li><h3 class='comments-header'>Incoming links (trackbacks)</h3></li>
 		<?php
 			/* Loop through and list the trackbacks. */
 			wp_list_comments(array( 'max_depth' => '1', 'callback' => 'themeTrackbacks')); ?>

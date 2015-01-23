@@ -962,24 +962,23 @@ a.panel .panel-intro-wrap .panel-intro p {
   text-indent: 0;
   border-bottom: 1px solid #61c8f6;
 }
+#comments ol.commentlist.pingbacklist {
+  border-bottom: none;
+  border-top: 1px solid #61c8f6;
+  margin-top: 3em;
+}
 #comments ol.commentlist li {
   margin: 0;
 }
-#comments ol.commentlist li.comment:not(:first-of-type),
-#comments ol.commentlist li.pingback:not(:first-of-type),
-#comments ol.commentlist li.trackback:not(:first-of-type) {
+#comments ol.commentlist li.comment:not(:first-of-type) {
   margin-top: 6em;
 }
-#comments ol.commentlist li.comment .author,
-#comments ol.commentlist li.pingback .author,
-#comments ol.commentlist li.trackback .author {
+#comments ol.commentlist li.comment .author {
   font-family: 'Lato', sans-serif;
   font-weight: bold;
   margin-bottom: 0.6em;
 }
-#comments ol.commentlist li.comment div.reply a,
-#comments ol.commentlist li.pingback div.reply a,
-#comments ol.commentlist li.trackback div.reply a {
+#comments ol.commentlist li.comment div.reply a {
   font-family: 'Lato', sans-serif;
   z-index: 900;
   border-radius: 3px;
@@ -998,21 +997,13 @@ a.panel .panel-intro-wrap .panel-intro p {
   padding: 0.6em 2em;
 }
 #comments ol.commentlist li.comment div.reply a:hover,
-#comments ol.commentlist li.pingback div.reply a:hover,
-#comments ol.commentlist li.trackback div.reply a:hover,
-#comments ol.commentlist li.comment div.reply a:focus,
-#comments ol.commentlist li.pingback div.reply a:focus,
-#comments ol.commentlist li.trackback div.reply a:focus {
+#comments ol.commentlist li.comment div.reply a:focus {
   outline: none;
   text-decoration: none;
   background-color: #008db6;
 }
 #comments ol.commentlist li.comment div.reply a:before,
-#comments ol.commentlist li.pingback div.reply a:before,
-#comments ol.commentlist li.trackback div.reply a:before,
-#comments ol.commentlist li.comment div.reply a:after,
-#comments ol.commentlist li.pingback div.reply a:after,
-#comments ol.commentlist li.trackback div.reply a:after {
+#comments ol.commentlist li.comment div.reply a:after {
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -ms-transition: all 0.2s ease;
@@ -1026,28 +1017,16 @@ a.panel .panel-intro-wrap .panel-intro p {
   font-size: 1em;
   color: #61c8f6;
 }
-#comments ol.commentlist li.comment div.reply a:before,
-#comments ol.commentlist li.pingback div.reply a:before,
-#comments ol.commentlist li.trackback div.reply a:before {
+#comments ol.commentlist li.comment div.reply a:before {
   right: 1em;
 }
 #comments ol.commentlist li.comment div.reply a:hover:before,
-#comments ol.commentlist li.pingback div.reply a:hover:before,
-#comments ol.commentlist li.trackback div.reply a:hover:before,
 #comments ol.commentlist li.comment div.reply a:focus:before,
-#comments ol.commentlist li.pingback div.reply a:focus:before,
-#comments ol.commentlist li.trackback div.reply a:focus:before,
 #comments ol.commentlist li.comment div.reply a:hover:after,
-#comments ol.commentlist li.pingback div.reply a:hover:after,
-#comments ol.commentlist li.trackback div.reply a:hover:after,
-#comments ol.commentlist li.comment div.reply a:focus:after,
-#comments ol.commentlist li.pingback div.reply a:focus:after,
-#comments ol.commentlist li.trackback div.reply a:focus:after {
+#comments ol.commentlist li.comment div.reply a:focus:after {
   color: #fff;
 }
-#comments ol.commentlist li.comment div.reply a:after,
-#comments ol.commentlist li.pingback div.reply a:after,
-#comments ol.commentlist li.trackback div.reply a:after {
+#comments ol.commentlist li.comment div.reply a:after {
   content: "\21B5";
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
@@ -1056,38 +1035,26 @@ a.panel .panel-intro-wrap .panel-intro p {
   transform: rotate(-90deg);
 }
 #comments ol.commentlist li.comment div.reply a:hover:after,
-#comments ol.commentlist li.pingback div.reply a:hover:after,
-#comments ol.commentlist li.trackback div.reply a:hover:after,
-#comments ol.commentlist li.comment div.reply a:focus:after,
-#comments ol.commentlist li.pingback div.reply a:focus:after,
-#comments ol.commentlist li.trackback div.reply a:focus:after {
+#comments ol.commentlist li.comment div.reply a:focus:after {
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
   -o-transform: rotate(0deg);
   transform: rotate(0deg);
 }
-#comments ol.commentlist li.comment ul.children,
-#comments ol.commentlist li.pingback ul.children,
-#comments ol.commentlist li.trackback ul.children {
+#comments ol.commentlist li.comment ul.children {
   list-style: none;
   margin: 1em 0 0;
   text-indent: 0;
 }
-#comments ol.commentlist li.comment ul.children li.comment,
-#comments ol.commentlist li.pingback ul.children li.comment,
-#comments ol.commentlist li.trackback ul.children li.comment {
+#comments ol.commentlist li.comment ul.children li.comment {
   margin-left: 1em;
   margin-top: 2em;
 }
-#comments ol.commentlist li.comment ul.children li.comment .author-wrap,
-#comments ol.commentlist li.pingback ul.children li.comment .author-wrap,
-#comments ol.commentlist li.trackback ul.children li.comment .author-wrap {
+#comments ol.commentlist li.comment ul.children li.comment .author-wrap {
   padding-left: 0.6em;
 }
-#comments ol.commentlist li.comment ul.children li.comment .author-wrap .author:before,
-#comments ol.commentlist li.pingback ul.children li.comment .author-wrap .author:before,
-#comments ol.commentlist li.trackback ul.children li.comment .author-wrap .author:before {
+#comments ol.commentlist li.comment ul.children li.comment .author-wrap .author:before {
   content: "\21B5";
   color: #d8d4d5;
   margin-right: 0.6em;
