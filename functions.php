@@ -13,6 +13,12 @@ function register_my_menu() {
 add_action( 'init', 'register_my_menu' );
 
 /* comments */
+function postHasComments( $type, $post_id ) {
+    $comments = get_comments(array('status' => 'approve', 'comment_type' => $type, 'post_id' => $post_id));
+    $comments = separate_comments( $comments );
+    return 0 < count( $comments[ $type ] );
+}
+
 function themeComments($comment, $args, $depth) {
     $GLOBALS['comment'] = $comment;
     $comment_type = get_comment_type();

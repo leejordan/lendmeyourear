@@ -18,8 +18,6 @@
 
 <?php if ( have_comments() ) : ?>
 
-<?php echo "<h3 class='comments-header'>Comments</h3>"; ?>
-
 <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 			<div class="navigation">
 				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments' ) ); ?></div>
@@ -27,6 +25,7 @@
 			</div> <!-- .navigation -->
 <?php endif; // check for comment navigation ?>
 
+			<h3 class='comments-header'>Comments</h3>
 			<ol class="commentlist">
 				<?php
 					/* Loop through and list the comments. */
@@ -107,12 +106,15 @@
 
 <?php comment_form($comment_args); ?>
 
-<hr>
-<h3 class='comments-header'>Trackbacks</h3>
-<ol class="commentlist">
-	<?php
-		/* Loop through and list the trackbacks. */
-		wp_list_comments(array( 'max_depth' => '1', 'callback' => 'themeTrackbacks')); ?>
-</ol>
+<?php if(postHasComments('pingback', get_the_ID())) : ?>
+
+	<h3 class='comments-header'>This post is linked to from the following places</h3>
+	<ol class="commentlist">
+		<?php
+			/* Loop through and list the trackbacks. */
+			wp_list_comments(array( 'max_depth' => '1', 'callback' => 'themeTrackbacks')); ?>
+	</ol>
+
+<?php endif; ?>
 
 </div><!-- #comments -->
