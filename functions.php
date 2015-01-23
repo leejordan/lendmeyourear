@@ -14,7 +14,10 @@ add_action( 'init', 'register_my_menu' );
 
 /* comments */
 function themeComments($comment, $args, $depth) {
-   $GLOBALS['comment'] = $comment; ?>
+    $GLOBALS['comment'] = $comment;
+    $comment_type = get_comment_type();
+    if($comment_type == 'comment') {
+?>
     <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
         <div id="comment-<?php comment_ID(); ?>">
             <div class="pull-right date-wrap">
@@ -40,6 +43,22 @@ function themeComments($comment, $args, $depth) {
             <div class="clearfix"></div>
         </div>
 <?php
-    }
+    };}
+?>
 
+<?php
+function themeTrackbacks($comment, $args, $depth) {
+    $GLOBALS['comment'] = $comment;
+    $comment_type = get_comment_type();
+    if($comment_type == 'trackback' || $comment_type == 'pingback') {
+?>
+    <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
+        <div id="comment-<?php comment_ID(); ?>">
+            <div class="pull-left author-wrap">
+                <?php printf(__('<p class="author">%s</p>'), get_comment_author_link()) ?>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+<?php
+    };}
 ?>

@@ -107,4 +107,12 @@
 
 <?php comment_form($comment_args); ?>
 
+<hr>
+<h3 class='comments-header'>Trackbacks</h3>
+<ol class="commentlist">
+	<?php
+		/* Loop through and list the trackbacks. */
+		wp_list_comments(array( 'max_depth' => '1', 'callback' => 'themeTrackbacks')); ?>
+</ol>
+
 </div><!-- #comments -->

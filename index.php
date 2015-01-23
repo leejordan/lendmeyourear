@@ -33,12 +33,14 @@
                 <?php echo get_post_meta($post->ID, 'custom-markup', true) ?>
                 <h1><?php the_title(); ?></h1>
                 <?php the_content('Read more &gt;'); ?>
-            </div>
-            <div class="footer-container">
-                <div class="clearfix"></div>
                 <p>Posted on: <?php the_date(); ?>
                 <p>Tagged: <?php echo get_the_tag_list( null, ', ', null ); ?></p>
-                <?php comments_template(null, true); ?>
+            </div>
+            <div class="highlight-container">
+                <div class="footer-container">
+                    <div class="clearfix"></div>
+                    <?php comments_template(null, true); ?>
+                </div>
             </div>
 
         <?php else : /* show post titles */ ?>

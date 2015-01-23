@@ -510,8 +510,12 @@ hr {
   margin: 0 auto;
   text-align: left;
 }
-.footer-container {
-  margin: 5em auto 1em;
+.highlight-container {
+  max-width: 100%;
+  width: 100%;
+  padding: 3em 0;
+  margin: 3em auto;
+  background-color: #f4f4f7;
 }
 .panel-container {
   -webkit-backface-visibility: hidden;
@@ -838,8 +842,7 @@ a.panel .panel-intro-wrap .panel-intro p {
   font-size: 1.15em;
 }
 .post-container strong {
-  font-family: 'Lato', sans-serif;
-  color: #008db6;
+  font-weight: bold;
 }
 .post-container blockquote {
   margin-bottom: 3em;
@@ -897,6 +900,15 @@ a.panel .panel-intro-wrap .panel-intro p {
     clear: both;
   }
 }
+/* highlight container */
+.highlight-container select:hover,
+.highlight-container textarea:hover,
+.highlight-container input:not([type=button]):not([type=submit]):hover,
+.highlight-container select:focus,
+.highlight-container textarea:focus,
+.highlight-container input:not([type=button]):not([type=submit]):focus {
+  background-color: #fff;
+}
 /* bootstrap embed-responsive */
 .embed-responsive {
   position: relative;
@@ -942,13 +954,6 @@ a.panel .panel-intro-wrap .panel-intro p {
 #comments h5,
 #comments h6 {
   margin: 0.6em 0;
-}
-#comments .comments-header {
-  margin-top: 3em;
-  margin-bottom: 0.6em;
-}
-#comments .comment-respond {
-  margin-top: 3em;
 }
 #comments ol.commentlist {
   list-style: none;
@@ -1093,30 +1098,18 @@ a.panel .panel-intro-wrap .panel-intro p {
 }
 #comments ol.commentlist li.pingback,
 #comments ol.commentlist li.trackback {
-  margin-top: 6em;
-  padding: 0.6em;
-  background-color: #f4f4f7;
+  margin-top: 0.6em;
+  padding: 0;
 }
 #comments ol.commentlist li.pingback + .pingback,
 #comments ol.commentlist li.trackback + .pingback,
 #comments ol.commentlist li.pingback + .trackback,
 #comments ol.commentlist li.trackback + .trackback {
-  margin-top: 0.6em;
+  margin-top: 0em;
 }
 #comments ol.commentlist li.pingback .author,
 #comments ol.commentlist li.trackback .author {
   margin: 0;
-}
-#comments ol.commentlist li.pingback .date-wrap,
-#comments ol.commentlist li.trackback .date-wrap,
-#comments ol.commentlist li.pingback .comment-body-wrap,
-#comments ol.commentlist li.trackback .comment-body-wrap {
-  display: none;
-}
-#comments ol.commentlist li.pingback .author:before,
-#comments ol.commentlist li.trackback .author:before {
-  content: "Linked from: ";
-  margin-right: 0.6em;
 }
 /* panel responsiveness */
 @media (min-width: 480px) {
@@ -1168,7 +1161,7 @@ a.panel .panel-intro-wrap .panel-intro p {
     display: inline-block;
   }
   .post-container,
-  .footer-container {
+  .footer-content {
     width: 70%;
   }
   .post-nav {

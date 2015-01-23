@@ -436,8 +436,12 @@ Tags: white, blue, light
         text-align: left;
     }
 
-    .footer-container {
-        margin: 5em auto 1em;
+    .highlight-container {
+        max-width: 100%;
+        width: 100%;
+        padding: 3em 0;
+        margin: 3em auto;
+        background-color: @highlight;
     }
 
     .panel-container {
@@ -667,8 +671,7 @@ Tags: white, blue, light
         }
 
         strong {
-            font-family: 'Lato', sans-serif;
-            color: @feature-darker;
+            font-weight: bold;
         }
 
         blockquote {
@@ -715,6 +718,18 @@ Tags: white, blue, light
                 width: 100%;
                 height: auto;
                 margin: 0 auto 1em;
+            }
+        }
+    }
+
+/* highlight container */
+    .highlight-container {
+        select,
+        textarea,
+        input:not([type=button]):not([type=submit]) {
+            &:hover,
+            &:focus {
+                background-color: #fff;
             }
         }
     }
@@ -770,21 +785,12 @@ Tags: white, blue, light
             margin: 0.6em 0;
         }
 
-        .comments-header {
-            margin-top: 3em;
-            margin-bottom: 0.6em;
-        }
-
-        .comment-respond {
-            margin-top: 3em;
-        }
-
         ol.commentlist {
             list-style:none;
             margin:0;
             padding: 1em 0;
             text-indent:0;
-            border-bottom: 1px solid @feature-light;
+            border-bottom: 1px solid  @feature-light;
 
             li {
                 margin: 0;
@@ -838,32 +844,16 @@ Tags: white, blue, light
 
                 &.pingback,
                 &.trackback {
-                    margin-top: 6em;
-                    padding: 0.6em;
-                    background-color: @highlight;
+                    margin-top: 0.6em;
+                    padding: 0;
 
                     & + .pingback,
                     & + .trackback {
-                        margin-top: 0.6em;
+                        margin-top: 0em;
                     }
 
                     .author {
                         margin: 0;
-                    }
-
-                    .date-wrap,
-                    .comment-body-wrap {
-                        display: none;
-                    }
-                }
-
-                &.pingback,
-                &.trackback {
-                    .author {
-                        &:before {
-                            content: "Linked from: ";
-                            margin-right: 0.6em;
-                        }
                     }
                 }
             }
@@ -937,7 +927,7 @@ Tags: white, blue, light
         }
 
         .post-container,
-        .footer-container {
+        .footer-content {
             width: 70%;
         }
 
