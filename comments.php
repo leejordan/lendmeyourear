@@ -62,7 +62,7 @@
 	  'cancel_reply_link' => __( 'Cancel Comment' ),
 	  'label_submit'      => __( 'Submit Comment' ),
 
-	  'comment_field' =>  '<div class="form-group"><label for="comment">Comment:</label><textarea id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true" placeholder="your comment"></textarea></div>',
+	  'comment_field' =>  '<div class="form-group"><label for="comment">Comment:</label><textarea id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true"></textarea></div>',
 
 	  'must_log_in' => '<p class="must-log-in">' .
 	    sprintf(
@@ -88,7 +88,7 @@
 	      '<div class="form-group">' .
 	      '<p class="comment-form-author">' .
 	      '<label for="author">' . __( 'Name: ', 'domainreference' ) . '</label> ' .
-	      '<input id="author" class="form-control" placeholder="name" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+	      '<input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
 	      '" size="30"' . $aria_req . ' /></p>' .
 	      '</div>',
 
@@ -96,7 +96,7 @@
 	      '<div class="form-group">' .
 	      '<p class="comment-form-email">' .
 	      '<label for="email">' . __( 'Email address:', 'domainreference' ) . '</label> ' .
-	      '<input id="email" class="form-control" placeholder="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+	      '<input id="email" class="form-control" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
 	      '" size="30"' . $aria_req . ' /></p>' .
 	      '</div>',
 	    )

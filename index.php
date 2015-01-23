@@ -33,8 +33,11 @@
                 <?php echo get_post_meta($post->ID, 'custom-markup', true) ?>
                 <h1><?php the_title(); ?></h1>
                 <?php the_content('Read more &gt;'); ?>
-                <p>Posted on: <?php the_date(); ?>
-                <p>Tagged: <?php echo get_the_tag_list( null, ', ', null ); ?></p>
+                <hr>
+                <p>
+                    Posted on: <?php the_date(); ?>
+                    <br>Tagged: <?php echo get_the_tag_list( null, ', ', null ); ?>
+                </p>
             </div>
             <div class="highlight-container">
                 <div class="footer-container">
