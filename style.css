@@ -132,6 +132,7 @@ button {
   cursor: pointer;
   text-decoration: none;
   color: #00b5e9;
+  border: 0;
 }
 a:hover,
 button:hover {
@@ -716,7 +717,7 @@ a.panel .panel-intro-wrap .panel-intro p {
   width: auto;
   height: auto;
 }
-/* post layout helpers */
+/* post furniture */
 .link-panel {
   background-color: #f4f4f7;
   text-align: center;
@@ -737,7 +738,6 @@ a.panel .panel-intro-wrap .panel-intro p {
 .link-panel .btn {
   margin: 0 0 0.5em 0;
 }
-/* post content */
 #further-reading {
   max-width: 770px;
 }
@@ -835,10 +835,11 @@ a.panel .panel-intro-wrap .panel-intro p {
   -o-transform: translateX(0.8em);
   transform: translateX(0.8em);
 }
-.post-container p {
+/* post content */
+.post-container > p {
   margin-bottom: 2em;
 }
-.post-container p:first-of-type {
+.post-container > p:first-of-type {
   font-size: 1.15em;
 }
 .post-container strong {
@@ -875,6 +876,14 @@ a.panel .panel-intro-wrap .panel-intro p {
 .post-container img .alignright {
   margin: 0 auto;
 }
+.post-container .post-meta {
+  margin-top: 6em;
+  padding-top: 0.6em;
+  border-top: 1px solid #61c8f6;
+}
+.post-container .post-meta:first-of-type {
+  font-size: 1em;
+}
 @media (max-width: 480px) {
   .post-container .pull-reset-mobile {
     display: block;
@@ -899,6 +908,18 @@ a.panel .panel-intro-wrap .panel-intro p {
   .post-container .pull-reset-mobile:after {
     clear: both;
   }
+}
+.post-container.text-left,
+.post-container .text-left {
+  text-align: left;
+}
+.post-container.text-center,
+.post-container .text-center {
+  text-align: center;
+}
+.post-container.text-right,
+.post-container .text-right {
+  text-align: right;
 }
 /* highlight container */
 .highlight-container select:hover,

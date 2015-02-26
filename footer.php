@@ -37,5 +37,13 @@
 
 <?php endif ?>
 
+<?php if (is_archive() || is_home() || is_single() || is_404()) : ?>
+
+    <div class="footer-container">
+        <?php get_search_form(); ?>
+    </div>
+
+<?php endif ?>
+
 </body>
 </html>

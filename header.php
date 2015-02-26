@@ -38,9 +38,8 @@
     </div>
 
     <?php /* begin the loop */ if (have_posts()) : ?>
-        <?php if (!is_single() && !is_page()) : ?>
+        <?php if (is_archive() || is_home()) : ?>
             <div class="panel-container">
-                <hr>
                 <?php
                     $tags = get_tags();
                     if ($tags) {
@@ -49,7 +48,6 @@
                         }
                     }
                 ?>
-                <hr>
             </div>
         <?php endif ?>
     <?php endif ?>
