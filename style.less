@@ -33,7 +33,6 @@ Tags: white, blue, light
         z-index: @zindex-under;
         border-radius: 3px;
         overflow: hidden;
-        background-color: #fff;
         color: @feature-dark;
     }
 
@@ -281,7 +280,6 @@ Tags: white, blue, light
     }
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Lato', sans-serif;
-        padding-top: 0.6em;
         margin-bottom: 0.6em;
     }
     p, ul, ol, pre, blockquote, cite, table { margin-bottom: 0.6em; }
@@ -322,6 +320,7 @@ Tags: white, blue, light
 
         &:focus,
         &:active {
+            text-decoration: underline;
             outline: 1px solid @feature-light;
         }
 
@@ -432,7 +431,7 @@ Tags: white, blue, light
     .footer-container {
         max-width: @max-width;
         width: 100%;
-        padding: 0 1em;
+        padding: 2em 1em;
         margin: 0 auto;
         text-align: left;
     }
@@ -440,35 +439,29 @@ Tags: white, blue, light
     .highlight-container {
         max-width: 100%;
         width: 100%;
-        padding: 3em 0;
-        margin: 3em auto;
         background-color: @highlight;
     }
 
     .panel-container {
         -webkit-backface-visibility: hidden;
         max-width: 1600px;
-        margin: 20px auto;
-        padding: 0 1em;
+        margin: 0 auto;
+        padding: 2em 1em;
     }
 
 /* header */
     .header {
         display: block;
-        clear: both;
         position: relative;
-        text-align: left;
-        margin: 1em 0;
 
         h1 {
             display: inline-block;
-            float: left;
             margin: 0;
             padding: 0;
             font-family: 'Lato', sans-serif;
 
             .subheader {
-                display: block;
+                display: inline-block;
                 color:  @secondary-light;
             }
 
@@ -476,17 +469,15 @@ Tags: white, blue, light
                 &:hover,
                 &:focus {
                     .subheader {
-                        color: #fff;
+                        color: @feature-dark;
+                        text-decoration: underline;
                     }
                 }
             }
         }
 
         .header-link-section {
-            position: relative;
-            float: left;
-            clear: both;
-            margin-top: 0;
+            margin-top: 1em;
 
             ul {
                 display: inline-block;
@@ -508,6 +499,10 @@ Tags: white, blue, light
                 }
             }
         }
+    }
+
+    .tag-list {
+        text-align: left;
     }
 
 /* post panels */
@@ -562,6 +557,16 @@ Tags: white, blue, light
     }
 
 /* post furniture */
+    .post-header {
+        h1 {
+            margin: 0 0 1em 0;
+        }
+
+        img {
+            margin: 0 auto !important;
+        }
+    }
+
     .link-panel {
         background-color: @highlight;
         text-align: center;
@@ -714,7 +719,6 @@ Tags: white, blue, light
         .post-meta {
             margin-top: 6em;
             padding-top: 0.6em;
-            border-top: 1px solid  @feature-light;
 
             &:first-of-type {
                 font-size: 1em;
@@ -925,40 +929,30 @@ Tags: white, blue, light
 
 /* general responsiveness */
 
-    @media (min-width: 480px) {
-        .header {
-            .header-link-section {
-                float: right;
-                clear: none;
-                margin-top: 1em;
-            }
-        }
-
-        .panel-container,
-        .post-container,
-        .footer-container {
-            padding: 0 3em;
-        }
-    }
-
     @media (min-width: 769px) {
         h1, h2, h3, h4, h5, h6 {
-            margin: 0.6em 0 0.6em -20px;
+            margin: 0.6em 0 0.6em -0.6em;
         }
 
         .header {
-            margin: 2em 0;
-
             h1 {
-                .subheader {
-                    display: inline-block;
-                }
+                margin: 0 0 0 -0.6em;
             }
+        }
+
+        .tag-list {
+            text-align: center;
         }
 
         .post-container,
         .footer-content {
             width: 70%;
+        }
+
+        .post-header {
+            h1 {
+                margin: 0 0 1em -0.6em;
+            }
         }
 
         .post-nav {

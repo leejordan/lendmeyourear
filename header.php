@@ -20,10 +20,10 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-    <div class="panel-container">
+    <div class="post-container">
         <div class="header">
             <h1>
-                <a tabindex="1" class="pill" href="<?php bloginfo('url'); ?>">
+                <a href="<?php bloginfo('url'); ?>">
                     <?php bloginfo('name'); ?>
                     <span class="subheader">
                         <?php bloginfo('description'); ?>
@@ -33,21 +33,22 @@
             <div class="header-link-section">
                 <?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
             </div>
-             <div class="clearfix"></div>
         </div>
     </div>
 
     <?php /* begin the loop */ if (have_posts()) : ?>
         <?php if (is_archive() || is_home()) : ?>
-            <div class="panel-container">
-                <?php
-                    $tags = get_tags();
-                    if ($tags) {
-                        foreach ($tags as $tag) {
-                            echo '<a tabindex="4" data-filter="' . $tag->name . '" class="pill' . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
+            <div class="highlight-container">
+                <div class="panel-container tag-list">
+                    <?php
+                        $tags = get_tags();
+                        if ($tags) {
+                            foreach ($tags as $tag) {
+                                echo '<a data-filter="' . $tag->name . '" class="pill' . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
+                            }
                         }
-                    }
-                ?>
+                    ?>
+                </div>
             </div>
         <?php endif ?>
     <?php endif ?>

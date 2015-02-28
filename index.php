@@ -32,11 +32,15 @@
                     <?php next_post_link('%link', 'Newer post'); ?>
                 </div>
 
-                <?php if ( has_post_thumbnail() && !get_post_meta($post->ID, 'custom-header', true) ) the_post_thumbnail('large'); ?>
+                <div class="highlight-container">
+                    <div class="post-container post-header">
+                        <h1><?php the_title(); ?></h1>
+                        <?php if ( has_post_thumbnail() && !get_post_meta($post->ID, 'custom-header', true) ) the_post_thumbnail('large'); ?>
+                        <?php echo get_post_meta($post->ID, 'custom-header', true) ?>
+                        <?php echo get_post_meta($post->ID, 'custom-markup', true) ?>
+                    </div>
+                </div>
                 <div class="post-container">
-                    <?php echo get_post_meta($post->ID, 'custom-header', true) ?>
-                    <?php echo get_post_meta($post->ID, 'custom-markup', true) ?>
-                    <h1><?php the_title(); ?></h1>
                     <?php the_content('Read more &gt;'); ?>
                     <div class="post-meta">
                         <p>
@@ -54,7 +58,7 @@
 
             <?php else : /* show post panels */ ?>
 
-                <a tabindex="3" class="panel" href="<?php the_permalink() ?>" data-tags="<?php foreach (get_the_tags() as $tag) { echo $tag->name . " "; } ?>">
+                <a class="panel" href="<?php the_permalink() ?>" data-tags="<?php foreach (get_the_tags() as $tag) { echo $tag->name . " "; } ?>">
                     <div class="panel-intro-wrap">
                         <div class="panel-intro">
                             <h2><?php the_title(); ?></h2>

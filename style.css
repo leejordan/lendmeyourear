@@ -92,7 +92,6 @@ h4,
 h5,
 h6 {
   font-family: 'Lato', sans-serif;
-  padding-top: 0.6em;
   margin-bottom: 0.6em;
 }
 p,
@@ -142,6 +141,7 @@ a:focus,
 button:focus,
 a:active,
 button:active {
+  text-decoration: underline;
   outline: 1px solid #61c8f6;
 }
 a.btn,
@@ -150,7 +150,6 @@ button.btn {
   z-index: 900;
   border-radius: 3px;
   overflow: hidden;
-  background-color: #fff;
   color: #00b5e9;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
@@ -419,7 +418,6 @@ textarea[type="submit"] {
   z-index: 900;
   border-radius: 3px;
   overflow: hidden;
-  background-color: #fff;
   color: #00b5e9;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
@@ -507,51 +505,43 @@ hr {
 .footer-container {
   max-width: 770px;
   width: 100%;
-  padding: 0 1em;
+  padding: 2em 1em;
   margin: 0 auto;
   text-align: left;
 }
 .highlight-container {
   max-width: 100%;
   width: 100%;
-  padding: 3em 0;
-  margin: 3em auto;
   background-color: #f4f4f7;
 }
 .panel-container {
   -webkit-backface-visibility: hidden;
   max-width: 1600px;
-  margin: 20px auto;
-  padding: 0 1em;
+  margin: 0 auto;
+  padding: 2em 1em;
 }
 /* header */
 .header {
   display: block;
-  clear: both;
   position: relative;
-  text-align: left;
-  margin: 1em 0;
 }
 .header h1 {
   display: inline-block;
-  float: left;
   margin: 0;
   padding: 0;
   font-family: 'Lato', sans-serif;
 }
 .header h1 .subheader {
-  display: block;
+  display: inline-block;
   color: #d8d4d5;
 }
 .header h1 a:hover .subheader,
 .header h1 a:focus .subheader {
-  color: #fff;
+  color: #00b5e9;
+  text-decoration: underline;
 }
 .header .header-link-section {
-  position: relative;
-  float: left;
-  clear: both;
-  margin-top: 0;
+  margin-top: 1em;
 }
 .header .header-link-section ul {
   display: inline-block;
@@ -573,7 +563,6 @@ hr {
   z-index: 900;
   border-radius: 3px;
   overflow: hidden;
-  background-color: #fff;
   color: #00b5e9;
   display: inline-block;
   padding: 5px;
@@ -605,6 +594,9 @@ hr {
 .header .header-link-section ul li:not(:last-child) {
   margin-right: 0.6em;
 }
+.tag-list {
+  text-align: left;
+}
 /* post panels */
 a.panel {
   font-family: 'Lato', sans-serif;
@@ -616,7 +608,6 @@ a.panel {
   z-index: 900;
   border-radius: 3px;
   overflow: hidden;
-  background-color: #fff;
   color: #00b5e9;
   width: 100%;
   padding: 1em;
@@ -682,7 +673,6 @@ a.panel .panel-intro-wrap .panel-intro p {
   z-index: 900;
   border-radius: 3px;
   overflow: hidden;
-  background-color: #fff;
   color: #00b5e9;
   display: inline-block;
   padding: 5px;
@@ -718,6 +708,12 @@ a.panel .panel-intro-wrap .panel-intro p {
   height: auto;
 }
 /* post furniture */
+.post-header h1 {
+  margin: 0 0 1em 0;
+}
+.post-header img {
+  margin: 0 auto !important;
+}
 .link-panel {
   background-color: #f4f4f7;
   text-align: center;
@@ -752,7 +748,6 @@ a.panel .panel-intro-wrap .panel-intro p {
   z-index: 900;
   border-radius: 3px;
   overflow: hidden;
-  background-color: #fff;
   color: #00b5e9;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
@@ -879,7 +874,6 @@ a.panel .panel-intro-wrap .panel-intro p {
 .post-container .post-meta {
   margin-top: 6em;
   padding-top: 0.6em;
-  border-top: 1px solid #61c8f6;
 }
 .post-container .post-meta:first-of-type {
   font-size: 1em;
@@ -1004,7 +998,6 @@ a.panel .panel-intro-wrap .panel-intro p {
   z-index: 900;
   border-radius: 3px;
   overflow: hidden;
-  background-color: #fff;
   color: #00b5e9;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
@@ -1121,18 +1114,6 @@ a.panel .panel-intro-wrap .panel-intro p {
   }
 }
 /* general responsiveness */
-@media (min-width: 480px) {
-  .header .header-link-section {
-    float: right;
-    clear: none;
-    margin-top: 1em;
-  }
-  .panel-container,
-  .post-container,
-  .footer-container {
-    padding: 0 3em;
-  }
-}
 @media (min-width: 769px) {
   h1,
   h2,
@@ -1140,17 +1121,20 @@ a.panel .panel-intro-wrap .panel-intro p {
   h4,
   h5,
   h6 {
-    margin: 0.6em 0 0.6em -20px;
+    margin: 0.6em 0 0.6em -0.6em;
   }
-  .header {
-    margin: 2em 0;
+  .header h1 {
+    margin: 0 0 0 -0.6em;
   }
-  .header h1 .subheader {
-    display: inline-block;
+  .tag-list {
+    text-align: center;
   }
   .post-container,
   .footer-content {
     width: 70%;
+  }
+  .post-header h1 {
+    margin: 0 0 1em -0.6em;
   }
   .post-nav {
     display: block;
