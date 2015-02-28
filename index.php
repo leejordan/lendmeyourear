@@ -2,15 +2,19 @@
 
     <?php /* if have posts */ if (have_posts()) : ?>
 
+        <?php if (is_search()) : ?>
+
+            <div class="highlight-container">
+                <div class="post-container">
+                    <h2>Search results for "<?php echo get_search_query(); ?>"</h2>
+                </div>
+            </div>
+
+        <?php endif ?>
+
         <?php if (!is_singular()) : ?>
 
             <div class="panel-container">
-
-            <?php if (is_search()) : ?>
-
-                <h2>Search results for "<?php echo get_search_query(); ?>"</h2>
-
-            <?php endif ?>
 
         <? endif ?>
 
@@ -73,12 +77,21 @@
 
         <?php endwhile;/* end the main loop */ ?>
 
+        <?php if (is_search()) : ?>
+
+            <div class="post-container">
+                <?php get_search_form(); ?>
+            </div>
+
+        <?php endif ?>
+
     <?php else : /* no posts found */ ?>
 
         <?php if (is_search()) : ?>
 
             <div class="post-container">
                 <p>No results were found for your search "<?php echo get_search_query(); ?>". <a href="<?php bloginfo('url') ?>">Try the homepage</a> or search again:</p>
+                <?php get_search_form(); ?>
             </div>
 
         <?php else : ?>
