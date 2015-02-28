@@ -92,7 +92,7 @@ h4,
 h5,
 h6 {
   font-family: 'Lato', sans-serif;
-  margin-bottom: 0.6em;
+  margin: 0.6em 0;
 }
 p,
 ul,
@@ -458,6 +458,13 @@ hr {
   clear: both;
 }
 /* helpers */
+.sans {
+  font-family: 'Lato', sans-serif;
+}
+.margin-reset {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -594,19 +601,6 @@ hr {
 }
 .header .header-link-section ul li:not(:last-child) {
   margin-right: 0.6em;
-}
-.tag-list {
-  position: relative;
-  text-align: left;
-}
-.tag-list:first-child:before {
-  content: "filter by tag:";
-  position: relative;
-  top: -0.5em;
-  padding-right: 0.3em;
-  padding-left: 0.3em;
-  font-family: 'Lato', sans-serif;
-  color: #61c8f6;
 }
 /* post panels */
 a.panel {
@@ -895,6 +889,9 @@ a.panel .panel-intro-wrap .panel-intro p {
 .post-container .post-meta:first-of-type {
   font-size: 1em;
 }
+.post-container .head {
+  margin: 0.6em 0;
+}
 @media (max-width: 480px) {
   .post-container .pull-reset-mobile {
     display: block;
@@ -1137,14 +1134,12 @@ a.panel .panel-intro-wrap .panel-intro p {
   h3,
   h4,
   h5,
-  h6 {
-    margin: 0.6em 0 0.6em -0.6em;
+  h6,
+  .post-container .head {
+    margin: 0 0 0.6em -0.6em;
   }
   .header h1 {
     margin: 0 0 0 -0.6em;
-  }
-  .tag-list {
-    text-align: center;
   }
   .post-container,
   .footer-content {

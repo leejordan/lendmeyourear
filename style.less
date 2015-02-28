@@ -284,7 +284,7 @@ Tags: white, blue, light
     }
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Lato', sans-serif;
-        margin-bottom: 0.6em;
+        margin: 0.6em 0;
     }
     p, ul, ol, pre, blockquote, cite, table { margin-bottom: 0.6em; }
     ul, ol {
@@ -389,6 +389,15 @@ Tags: white, blue, light
     }
 
 /* helpers */
+    .sans {
+        font-family: 'Lato', sans-serif;
+    }
+
+    .margin-reset {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
     .clearfix {
         .clearfix();
     }
@@ -500,23 +509,6 @@ Tags: white, blue, light
                         margin-right: 0.6em;
                     }
                 }
-            }
-        }
-    }
-
-    .tag-list {
-        position: relative;
-        text-align: left;
-
-        &:first-child {
-            &:before {
-                content: "filter by tag:";
-                position: relative;
-                top: -0.5em;
-                padding-right: 0.3em;
-                padding-left: 0.3em;
-                font-family: 'Lato', sans-serif;
-                color: @feature-light;
             }
         }
     }
@@ -741,6 +733,10 @@ Tags: white, blue, light
             }
         }
 
+        .head {
+            margin: 0.6em 0;
+        }
+
         @media (max-width: 480px) {
             .pull-reset-mobile {
                 .clearfix();
@@ -946,18 +942,15 @@ Tags: white, blue, light
 /* general responsiveness */
 
     @media (min-width: 769px) {
-        h1, h2, h3, h4, h5, h6 {
-            margin: 0.6em 0 0.6em -0.6em;
+        h1, h2, h3, h4, h5, h6,
+        .post-container .head {
+            margin: 0 0 0.6em -0.6em;
         }
 
         .header {
             h1 {
                 margin: 0 0 0 -0.6em;
             }
-        }
-
-        .tag-list {
-            text-align: center;
         }
 
         .post-container,

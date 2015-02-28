@@ -39,7 +39,12 @@
     <?php /* begin the loop */ if (have_posts()) : ?>
         <?php if (is_archive() || is_home()) : ?>
             <div class="highlight-container">
-                <div class="panel-container tag-list">
+                <div class="post-container">
+
+                    <?php if (is_tag()) : ?>
+                        <p class="sans head">Filtering by "<?php single_tag_title(); ?>" <a href="<?php bloginfo('url'); ?>">(show all)</a></p>
+                    <?php endif ?>
+
                     <?php
                         $tags = get_tags();
                         if ($tags) {
@@ -48,6 +53,7 @@
                             }
                         }
                     ?>
+
                 </div>
             </div>
         <?php endif ?>

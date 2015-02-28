@@ -6,7 +6,7 @@
 
             <div class="highlight-container">
                 <div class="post-container">
-                    <h2>Search results for "<?php echo get_search_query(); ?>"</h2>
+                    <p class="sans head margin-reset">Search results for "<?php echo get_search_query(); ?>"</p>
                 </div>
             </div>
 
