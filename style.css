@@ -138,9 +138,7 @@ button:hover {
   text-decoration: underline;
 }
 a:focus,
-button:focus,
-a:active,
-button:active {
+button:focus {
   text-decoration: underline;
   outline: 1px solid #61c8f6;
 }
@@ -565,7 +563,7 @@ hr {
   overflow: hidden;
   color: #00b5e9;
   display: inline-block;
-  padding: 5px;
+  padding: 0.3em;
 }
 .header .header-link-section ul li a:hover,
 .header .header-link-section ul li a:focus,
@@ -591,11 +589,24 @@ hr {
 .header .header-link-section ul li a.active p {
   color: #fff;
 }
+.header .header-link-section ul li a.active {
+  background-color: #00b5e9;
+}
 .header .header-link-section ul li:not(:last-child) {
   margin-right: 0.6em;
 }
 .tag-list {
+  position: relative;
   text-align: left;
+}
+.tag-list:first-child:before {
+  content: "filter by tag:";
+  position: relative;
+  top: -0.5em;
+  padding-right: 0.3em;
+  padding-left: 0.3em;
+  font-family: 'Lato', sans-serif;
+  color: #61c8f6;
 }
 /* post panels */
 a.panel {
@@ -638,6 +649,9 @@ a.panel:focus p,
 a.panel.active p {
   color: #fff;
 }
+a.panel.active {
+  background-color: #00b5e9;
+}
 a.panel .panel-intro-wrap {
   display: table;
   table-layout: fixed;
@@ -675,7 +689,7 @@ a.panel .panel-intro-wrap .panel-intro p {
   overflow: hidden;
   color: #00b5e9;
   display: inline-block;
-  padding: 5px;
+  padding: 0.3em;
 }
 .pill:hover,
 .pill:focus,
@@ -700,6 +714,9 @@ a.panel .panel-intro-wrap .panel-intro p {
 .pill:focus p,
 .pill.active p {
   color: #fff;
+}
+.pill.active {
+  background-color: #00b5e9;
 }
 /* post image */
 .wp-post-image {

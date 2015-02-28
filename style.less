@@ -57,12 +57,16 @@ Tags: white, blue, light
                 color: #fff;
             }
         }
+
+        &.active {
+            background-color: @feature-dark;
+        }
     }
 
     .pill-style() {
         .panel-style();
         display: inline-block;
-        padding: 5px;
+        padding: 0.3em;
     }
 
     .button-style() {
@@ -220,8 +224,8 @@ Tags: white, blue, light
     .clearfix() {
         &:before,
         &:after {
-            content: " "; // 1
-            display: table; // 2
+            content: " ";
+            display: table;
         }
         &:after {
             clear: both;
@@ -318,8 +322,7 @@ Tags: white, blue, light
             text-decoration: underline;
         }
 
-        &:focus,
-        &:active {
+        &:focus {
             text-decoration: underline;
             outline: 1px solid @feature-light;
         }
@@ -502,7 +505,20 @@ Tags: white, blue, light
     }
 
     .tag-list {
+        position: relative;
         text-align: left;
+
+        &:first-child {
+            &:before {
+                content: "filter by tag:";
+                position: relative;
+                top: -0.5em;
+                padding-right: 0.3em;
+                padding-left: 0.3em;
+                font-family: 'Lato', sans-serif;
+                color: @feature-light;
+            }
+        }
     }
 
 /* post panels */
