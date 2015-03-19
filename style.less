@@ -398,6 +398,11 @@ Tags: white, blue, light
         margin-bottom: 0 !important;
     }
 
+    .padding-reset {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
     .clearfix {
         .clearfix();
     }
@@ -443,7 +448,7 @@ Tags: white, blue, light
     .footer-container {
         max-width: @max-width;
         width: 100%;
-        padding: 2em 1em;
+        padding: 2em 2em;
         margin: 0 auto;
         text-align: left;
     }
@@ -459,15 +464,19 @@ Tags: white, blue, light
         max-width: 1600px;
         margin: 0 auto;
         padding: 2em 1em;
+        text-align: left;
     }
 
 /* header */
     .header {
         display: block;
         position: relative;
+        text-align: left;
+        padding: 0.5em 1em;
+        margin: 1em 0;
 
         h1 {
-            display: inline-block;
+            display: block;
             margin: 0;
             padding: 0;
             font-family: 'Lato', sans-serif;
@@ -489,7 +498,7 @@ Tags: white, blue, light
         }
 
         .header-link-section {
-            margin-top: 1em;
+            margin-top: 0.5em;
 
             ul {
                 display: inline-block;
@@ -518,19 +527,19 @@ Tags: white, blue, light
         &.panel {
             .panel-style();
             width: 100%;
-            padding: 1em;
+            padding: 0.6em;
             display: inline-block;
             text-align: left;
 
             .panel-intro-wrap {
                 display: table;
                 table-layout: fixed;
-                height: 140px;
-                padding: 0.6em;
+                height: 80px;
+                padding: 0.6em 0 0;
 
                 .panel-intro {
                     display: table-cell;
-                    vertical-align: middle;
+                    vertical-align: top;
                     width: 100%;
 
                     h2 {
@@ -567,7 +576,7 @@ Tags: white, blue, light
 /* post furniture */
     .post-header {
         h1 {
-            margin: 0 0 1em 0;
+            margin: 0;
         }
 
         img {
@@ -733,10 +742,6 @@ Tags: white, blue, light
             }
         }
 
-        .head {
-            margin: 0.6em 0;
-        }
-
         @media (max-width: 480px) {
             .pull-reset-mobile {
                 .clearfix();
@@ -861,7 +866,7 @@ Tags: white, blue, light
 
                     ul.children {
                         list-style:none;
-                        margin:1em 0 0;
+                        margin: 1em 0 0;
                         text-indent:0;
 
                         li.comment {
@@ -941,27 +946,30 @@ Tags: white, blue, light
 
 /* general responsiveness */
 
+    @media (min-width: 480px) {
+        .post-container,
+        .footer-container {
+            padding: 2em 3em;
+        }
+
+        .post-header {
+            margin: 0 auto;
+            padding: 1em 3em;
+        }
+    }
+
     @media (min-width: 769px) {
-        h1, h2, h3, h4, h5, h6,
-        .post-container .head {
+        h1, h2, h3, h4, h5, h6 {
             margin: 0 0 0.6em -0.6em;
         }
 
-        .header {
-            h1 {
-                margin: 0 0 0 -0.6em;
-            }
+        .panel-container {
+            text-align: center;
         }
 
         .post-container,
         .footer-content {
-            width: 70%;
-        }
-
-        .post-header {
-            h1 {
-                margin: 0 0 1em -0.6em;
-            }
+            width: 90%;
         }
 
         .post-nav {
@@ -978,6 +986,18 @@ Tags: white, blue, light
             &.link-panel-right {
                 float: right;
                 margin: 0 0 1em 1em;
+            }
+        }
+    }
+
+    @media (min-width: 992px) {
+        .header {
+            h1 {
+                float: left;
+            }
+
+            .header-link-section {
+                float: right;
             }
         }
     }

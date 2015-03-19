@@ -465,6 +465,10 @@ hr {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
+.padding-reset {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -510,7 +514,7 @@ hr {
 .footer-container {
   max-width: 770px;
   width: 100%;
-  padding: 2em 1em;
+  padding: 2em 2em;
   margin: 0 auto;
   text-align: left;
 }
@@ -524,14 +528,18 @@ hr {
   max-width: 1600px;
   margin: 0 auto;
   padding: 2em 1em;
+  text-align: left;
 }
 /* header */
 .header {
   display: block;
   position: relative;
+  text-align: left;
+  padding: 0.5em 1em;
+  margin: 1em 0;
 }
 .header h1 {
-  display: inline-block;
+  display: block;
   margin: 0;
   padding: 0;
   font-family: 'Lato', sans-serif;
@@ -546,7 +554,7 @@ hr {
   text-decoration: underline;
 }
 .header .header-link-section {
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 .header .header-link-section ul {
   display: inline-block;
@@ -615,7 +623,7 @@ a.panel {
   overflow: hidden;
   color: #00b5e9;
   width: 100%;
-  padding: 1em;
+  padding: 0.6em;
   display: inline-block;
   text-align: left;
 }
@@ -649,12 +657,12 @@ a.panel.active {
 a.panel .panel-intro-wrap {
   display: table;
   table-layout: fixed;
-  height: 140px;
-  padding: 0.6em;
+  height: 80px;
+  padding: 0.6em 0 0;
 }
 a.panel .panel-intro-wrap .panel-intro {
   display: table-cell;
-  vertical-align: middle;
+  vertical-align: top;
   width: 100%;
 }
 a.panel .panel-intro-wrap .panel-intro h2 {
@@ -720,7 +728,7 @@ a.panel .panel-intro-wrap .panel-intro p {
 }
 /* post furniture */
 .post-header h1 {
-  margin: 0 0 1em 0;
+  margin: 0;
 }
 .post-header img {
   margin: 0 auto !important;
@@ -888,9 +896,6 @@ a.panel .panel-intro-wrap .panel-intro p {
 }
 .post-container .post-meta:first-of-type {
   font-size: 1em;
-}
-.post-container .head {
-  margin: 0.6em 0;
 }
 @media (max-width: 480px) {
   .post-container .pull-reset-mobile {
@@ -1128,25 +1133,31 @@ a.panel .panel-intro-wrap .panel-intro p {
   }
 }
 /* general responsiveness */
+@media (min-width: 480px) {
+  .post-container,
+  .footer-container {
+    padding: 2em 3em;
+  }
+  .post-header {
+    margin: 0 auto;
+    padding: 1em 3em;
+  }
+}
 @media (min-width: 769px) {
   h1,
   h2,
   h3,
   h4,
   h5,
-  h6,
-  .post-container .head {
+  h6 {
     margin: 0 0 0.6em -0.6em;
   }
-  .header h1 {
-    margin: 0 0 0 -0.6em;
+  .panel-container {
+    text-align: center;
   }
   .post-container,
   .footer-content {
-    width: 70%;
-  }
-  .post-header h1 {
-    margin: 0 0 1em -0.6em;
+    width: 90%;
   }
   .post-nav {
     display: block;
@@ -1161,6 +1172,14 @@ a.panel .panel-intro-wrap .panel-intro p {
   .link-panel.link-panel-right {
     float: right;
     margin: 0 0 1em 1em;
+  }
+}
+@media (min-width: 992px) {
+  .header h1 {
+    float: left;
+  }
+  .header .header-link-section {
+    float: right;
   }
 }
 @media (min-width: 1200px) {

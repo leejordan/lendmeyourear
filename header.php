@@ -20,30 +20,25 @@
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-    <div class="post-container">
-        <div class="header">
-            <h1>
-                <a href="<?php bloginfo('url'); ?>">
-                    <?php bloginfo('name'); ?>
-                    <span class="subheader">
-                        <?php bloginfo('description'); ?>
-                    </span>
-                </a>
-            </h1>
-            <div class="header-link-section">
-                <?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
-            </div>
+    <div class="header">
+        <h1>
+            <a href="<?php bloginfo('url'); ?>">
+                <?php bloginfo('name'); ?>
+                <span class="subheader">
+                    <?php bloginfo('description'); ?>
+                </span>
+            </a>
+        </h1>
+        <div class="header-link-section">
+            <?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
         </div>
+        <div class="clearfix"></div>
     </div>
 
     <?php /* begin the loop */ if (have_posts()) : ?>
         <?php if (is_archive() || is_home()) : ?>
             <div class="highlight-container">
-                <div class="post-container">
-
-                    <?php if (is_tag()) : ?>
-                        <p class="sans head">Filtering by "<?php single_tag_title(); ?>" <a href="<?php bloginfo('url'); ?>">(show all)</a></p>
-                    <?php endif ?>
+                <div class="panel-container">
 
                     <?php
                         $tags = get_tags();

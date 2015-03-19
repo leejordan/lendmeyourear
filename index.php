@@ -23,7 +23,7 @@
     		<?php if (is_page()) : /* show page contents */ ?>
 
                 <div class="post-container">
-                    <h1><?php the_title(); ?></h1>
+                    <h2><?php the_title(); ?></h2>
                     <?php the_content('Read more &gt;'); ?>
                 </div>
 
@@ -36,14 +36,20 @@
                     <?php next_post_link('%link', 'Newer post'); ?>
                 </div>
 
-                <div class="highlight-container">
-                    <div class="post-container post-header">
-                        <h1><?php the_title(); ?></h1>
-                        <?php if ( has_post_thumbnail() && !get_post_meta($post->ID, 'custom-header', true) ) the_post_thumbnail('large'); ?>
-                        <?php echo get_post_meta($post->ID, 'custom-header', true) ?>
-                        <?php echo get_post_meta($post->ID, 'custom-markup', true) ?>
-                    </div>
+                <div class="post-container post-header">
+                    <h2><?php the_title(); ?></h2>
                 </div>
+
+                <?php if ( has_post_thumbnail() && ! get_post_meta($post->ID, 'custom-header', true) ) : ?>
+                    <?php the_post_thumbnail('large'); ?>
+                <?php elseif ( get_post_meta($post->ID, 'custom-header', true) ) : ?>
+                    <div class="post-container padding-reset">
+                        <?php echo get_post_meta($post->ID, 'custom-header', true) ?>
+                    </div>
+                <?php endif ?>
+
+                <?php echo get_post_meta($post->ID, 'custom-markup', true) ?>
+
                 <div class="post-container">
                     <?php the_content('Read more &gt;'); ?>
                     <div class="post-meta">
