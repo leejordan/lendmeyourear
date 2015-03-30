@@ -7,56 +7,6 @@ Author: Lee Jordan
 Author URI: http://lendmeyourear.net
 Tags: white, blue, light
 */
-/* variables */
-/* theme mixins */
-/* button mixins */
-.button-code {
-  padding: 0.6em 2em;
-}
-.button-code:before,
-.button-code:after {
-  -webkit-transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  -ms-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-  position: absolute;
-  right: 0.6em;
-  top: 0.6em;
-  display: inline-block;
-  font-family: 'Lato', sans-serif;
-  font-size: 1em;
-  color: #61c8f6;
-}
-.button-code:before {
-  right: 1em;
-}
-.button-code:hover:before,
-.button-code:focus:before,
-.button-code:hover:after,
-.button-code:focus:after {
-  color: #fff;
-}
-.button-code:before {
-  content: "\003E";
-}
-.button-code:after {
-  -webkit-transition: none;
-  -moz-transition: none;
-  -ms-transition: none;
-  -o-transition: none;
-  transition: none;
-  content: "\005F";
-}
-.button-code:hover:after,
-.button-code:focus:after {
-  -webkit-animation: blink 1s infinite normal linear;
-  -moz-animation: blink 1s infinite normal linear;
-  -ms-animation: blink 1s infinite normal linear;
-  animation: blink 1s infinite normal linear;
-}
-/* helper mixins */
-/* animations */
 @-webkit-keyframes blink {
   1%,
   50% {
@@ -77,7 +27,6 @@ Tags: white, blue, light
     opacity: 1;
   }
 }
-/* basic reset */
 * {
   margin: 0;
   padding: 0;
@@ -123,7 +72,6 @@ body {
   color: #333333;
   background-color: #fff;
 }
-/* links */
 a,
 button {
   position: relative;
@@ -386,7 +334,6 @@ button.btn-code:focus:after {
 img {
   border: none;
 }
-/* form */
 select,
 input,
 textarea {
@@ -449,7 +396,6 @@ textarea[type="submit"]:focus {
 .form-group .form-control {
   width: 100%;
 }
-/* general elements */
 hr {
   margin-top: 0.6em;
   margin-bottom: 0.6em;
@@ -457,7 +403,6 @@ hr {
   border-top: 1px solid #61c8f6;
   clear: both;
 }
-/* helpers */
 .sans {
   font-family: 'Lato', sans-serif;
 }
@@ -509,7 +454,6 @@ hr {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
-/* containers */
 .post-container,
 .footer-container {
   max-width: 770px;
@@ -530,7 +474,6 @@ hr {
   padding: 2em 1em;
   text-align: left;
 }
-/* header */
 .header {
   display: block;
   position: relative;
@@ -610,7 +553,6 @@ hr {
 .header .header-link-section ul li:not(:last-child) {
   margin-right: 0.6em;
 }
-/* post panels */
 a.panel {
   font-family: 'Lato', sans-serif;
   -webkit-transition: all 0.2s ease;
@@ -678,7 +620,6 @@ a.panel .panel-intro-wrap .panel-intro p {
   line-height: 1em;
   color: #333333;
 }
-/* pills */
 .pill {
   font-family: 'Lato', sans-serif;
   -webkit-transition: all 0.2s ease;
@@ -720,13 +661,11 @@ a.panel .panel-intro-wrap .panel-intro p {
 .pill.active {
   background-color: #00b5e9;
 }
-/* post image */
 .wp-post-image {
   max-width: 100%;
   width: auto;
   height: auto;
 }
-/* post furniture */
 .post-header h1 {
   margin: 0;
 }
@@ -849,7 +788,6 @@ a.panel .panel-intro-wrap .panel-intro p {
   -o-transform: translateX(0.8em);
   transform: translateX(0.8em);
 }
-/* post content */
 .post-container > p {
   margin-bottom: 2em;
 }
@@ -934,7 +872,6 @@ a.panel .panel-intro-wrap .panel-intro p {
 .post-container .text-right {
   text-align: right;
 }
-/* highlight container */
 .highlight-container select:hover,
 .highlight-container textarea:hover,
 .highlight-container input:not([type=button]):not([type=submit]):hover,
@@ -943,7 +880,6 @@ a.panel .panel-intro-wrap .panel-intro p {
 .highlight-container input:not([type=button]):not([type=submit]):focus {
   background-color: #fff;
 }
-/* bootstrap embed-responsive */
 .embed-responsive {
   position: relative;
   display: block;
@@ -977,7 +913,6 @@ a.panel .panel-intro-wrap .panel-intro p {
 .embed-responsive.embed-responsive-square {
   padding-bottom: 100%;
 }
-/* comments */
 #comments {
   text-align: left;
 }
@@ -1111,7 +1046,6 @@ a.panel .panel-intro-wrap .panel-intro p {
 #comments ol.commentlist li.trackback .author {
   margin: 0;
 }
-/* panel responsiveness */
 @media (min-width: 480px) {
   a.panel {
     width: 49%;
@@ -1132,7 +1066,6 @@ a.panel .panel-intro-wrap .panel-intro p {
     width: 19%;
   }
 }
-/* general responsiveness */
 @media (min-width: 480px) {
   .post-container,
   .footer-container {

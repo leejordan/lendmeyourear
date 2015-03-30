@@ -8,7 +8,7 @@ Author URI: http://lendmeyourear.net
 Tags: white, blue, light
 */
 
-/* variables */
+// variables
     @feature-light: #61c8f6;
     @feature-dark: #00b5e9;
     @feature-darker: darken(@feature-dark, 10%);
@@ -26,7 +26,7 @@ Tags: white, blue, light
 
     @max-width: 770px;
 
-/* theme mixins */
+// theme mixins
     .feature-style() {
         font-family: 'Lato', sans-serif;
         .transition(all 0.2s ease);
@@ -38,6 +38,8 @@ Tags: white, blue, light
 
     .panel-style() {
         .feature-style();
+
+        &:link {}
 
         &:hover,
         &:focus,
@@ -108,7 +110,7 @@ Tags: white, blue, light
         }
     }
 
-/* button mixins */
+// button mixins
     .button-icon() {
         padding: 0.6em 2em;
 
@@ -200,7 +202,7 @@ Tags: white, blue, light
         }
     }
 
-    .button-code {
+    .button-code() {
         .button-icon();
 
         &:before {
@@ -220,7 +222,7 @@ Tags: white, blue, light
         }
     }
 
-/* helper mixins */
+// helper mixins
     .clearfix() {
         &:before,
         &:after {
@@ -263,7 +265,7 @@ Tags: white, blue, light
         animation:              @animation;
     }
 
-/* animations */
+// animations
     @-webkit-keyframes blink {
         1%, 50% { opacity: 1; }
         51%, 100% { opacity: 0; }
@@ -274,7 +276,7 @@ Tags: white, blue, light
         51%, 100% { opacity: 1; }
     }
 
-/* basic reset */
+// basic reset
     * {
         margin: 0;
         padding: 0;
@@ -308,7 +310,7 @@ Tags: white, blue, light
         background-color: #fff;
     }
 
-/* links */
+// links
     a,
     button {
         position: relative;
@@ -358,7 +360,7 @@ Tags: white, blue, light
         border: none;
     }
 
-/* form */
+// form
     select,
     input,
     textarea {
@@ -379,7 +381,7 @@ Tags: white, blue, light
         }
     }
 
-/* general elements */
+// general elements
     hr {
         margin-top: 0.6em;
         margin-bottom: 0.6em;
@@ -388,7 +390,7 @@ Tags: white, blue, light
         clear: both;
     }
 
-/* helpers */
+// helpers
     .sans {
         font-family: 'Lato', sans-serif;
     }
@@ -443,7 +445,7 @@ Tags: white, blue, light
         border: 0;
     }
 
-/* containers */
+// containers
     .post-container,
     .footer-container {
         max-width: @max-width;
@@ -467,7 +469,7 @@ Tags: white, blue, light
         text-align: left;
     }
 
-/* header */
+// header
     .header {
         display: block;
         position: relative;
@@ -522,7 +524,7 @@ Tags: white, blue, light
         }
     }
 
-/* post panels */
+// post panels
     a {
         &.panel {
             .panel-style();
@@ -561,19 +563,19 @@ Tags: white, blue, light
         }
     }
 
-/* pills */
+// pills
     .pill {
         .pill-style();
     }
 
-/* post image */
+// post image
     .wp-post-image {
         max-width: 100%;
         width: auto;
         height: auto;
     }
 
-/* post furniture */
+// post furniture
     .post-header {
         h1 {
             margin: 0;
@@ -683,7 +685,7 @@ Tags: white, blue, light
         }
     }
 
-/* post content */
+// post content
     .post-container {
         > p {
             margin-bottom: 2em;
@@ -769,7 +771,7 @@ Tags: white, blue, light
         }
     }
 
-/* highlight container */
+// highlight container
     .highlight-container {
         select,
         textarea,
@@ -781,7 +783,7 @@ Tags: white, blue, light
         }
     }
 
-/* bootstrap embed-responsive */
+// bootstrap embed-responsive
     .embed-responsive {
         position: relative;
         display: block;
@@ -824,7 +826,7 @@ Tags: white, blue, light
         }
     }
 
-/* comments */
+// comments
     #comments {
         text-align: left;
 
@@ -911,7 +913,7 @@ Tags: white, blue, light
         }
     }
 
-/* panel responsiveness */
+// panel responsiveness
     @media (min-width: 480px) {
         a {
             &.panel {
@@ -944,7 +946,7 @@ Tags: white, blue, light
         }
     }
 
-/* general responsiveness */
+// general responsiveness
 
     @media (min-width: 480px) {
         .post-container,

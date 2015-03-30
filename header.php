@@ -19,7 +19,7 @@
 <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body ontouchstart="" <?php body_class(); ?>>
     <div class="header">
         <h1>
             <a href="<?php bloginfo('url'); ?>">
