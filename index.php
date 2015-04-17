@@ -2,109 +2,42 @@
 
     <?php /* if have posts */ if (have_posts()) : ?>
 
-        <?php if (is_search()) : ?>
+        <?php if (is_archive() || is_home()) : ?>
 
             <div class="highlight-container">
-                <div class="post-container">
-                    <p class="sans head margin-reset">Search results for "<?php echo get_search_query(); ?>"</p>
-                </div>
+                <ul class="nav-container">
+                    <?php
+                        $tags = get_tags();
+                        if ($tags) {
+                            foreach ($tags as $tag) {
+                                echo '<li class="nav-item"><a data-filter="' . $tag->name . '" class="pill' . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a></li>';
+                            }
+                        }
+                    ?>
+
+                </ul>
             </div>
 
         <?php endif ?>
 
-        <?php if (!is_singular()) : ?>
-
-            <div class="panel-container">
-
-        <? endif ?>
+        <ul class="reflex-container panel-container">
 
     	<?php while (have_posts()) : the_post(); ?>
 
-    		<?php if (is_page()) : /* show page contents */ ?>
-
-                <div class="post-container">
-                    <h2><?php the_title(); ?></h2>
-                    <?php the_content('Read more &gt;'); ?>
-                </div>
-
-            <?php elseif (is_single()) : /* show post contents */ ?>
-
-                <div class="post-nav post-prev">
-                    <?php previous_post_link('%link', 'Older post'); ?>
-                </div>
-                <div class="post-nav post-next">
-                    <?php next_post_link('%link', 'Newer post'); ?>
-                </div>
-
-                <div class="post-container post-header">
-                    <h2><?php the_title(); ?></h2>
-                </div>
-
-                <?php if ( has_post_thumbnail() && ! get_post_meta($post->ID, 'custom-header', true) ) : ?>
-                    <?php the_post_thumbnail('large'); ?>
-                <?php elseif ( get_post_meta($post->ID, 'custom-header', true) ) : ?>
-                    <div class="post-container padding-reset">
-                        <?php echo get_post_meta($post->ID, 'custom-header', true) ?>
-                    </div>
-                <?php endif ?>
-
-                <?php echo get_post_meta($post->ID, 'custom-markup', true) ?>
-
-                <div class="post-container">
-                    <?php the_content('Read more &gt;'); ?>
-                    <div class="post-meta">
-                        <p>
-                            Posted on: <?php the_date(); ?>
-                            <br>Tagged: <?php echo get_the_tag_list( null, ', ', null ); ?>
-                        </p>
-                    </div>
-                </div>
-                <div class="highlight-container">
-                    <div class="footer-container">
-                        <div class="clearfix"></div>
-                        <?php comments_template(null, true); ?>
-                    </div>
-                </div>
-
-            <?php else : /* show post panels */ ?>
-
-                <a class="panel" href="<?php the_permalink() ?>" data-tags="<?php foreach (get_the_tags() as $tag) { echo $tag->name . " "; } ?>">
-                    <div class="panel-intro-wrap">
-                        <div class="panel-intro">
-                            <h2><?php the_title(); ?></h2>
-                        </div>
-                    </div>
-                    <div class="panel-feature-image">
-                        <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
-                    </div>
+            <li class="reflex-col-md-3 reflex-col-sm-4 reflex-col-xs-6">
+                <a class="panel reflex-item reflex-item-margin-lg" href="<?php the_permalink() ?>">
+                    <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
+                    <h2><?php echo get_the_title(); ?></h2>
                 </a>
-
-            <?php endif; /* end if page or post */ ?>
+            </li>
 
         <?php endwhile;/* end the main loop */ ?>
 
-        <?php if (is_search()) : ?>
-
-            <div class="post-container">
-                <?php get_search_form(); ?>
-            </div>
-
-        <?php endif ?>
+        </ul>
 
     <?php else : /* no posts found */ ?>
 
-        <?php if (is_search()) : ?>
-
-            <div class="post-container">
-                <p>No results were found for your search "<?php echo get_search_query(); ?>". <a href="<?php bloginfo('url') ?>">Try the homepage</a> or search again:</p>
-                <?php get_search_form(); ?>
-            </div>
-
-        <?php else : ?>
-
-            <?php include '404.php' ?>
-
-        <?php endif ?>
+        <?php include '404.php' ?>
 
     <?php endif; /* end if haveposts */ ?>
 

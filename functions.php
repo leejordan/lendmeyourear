@@ -5,6 +5,7 @@ add_theme_support( 'post-thumbnails' );
 
 /* javascript */
 wp_enqueue_script("jquery");
+wp_enqueue_script("respond", get_template_directory_uri() . '/js/respond.min.js');
 
 /* nav */
 function register_my_menu() {

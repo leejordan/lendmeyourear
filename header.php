@@ -34,22 +34,3 @@
         </div>
         <div class="clearfix"></div>
     </div>
-
-    <?php /* begin the loop */ if (have_posts()) : ?>
-        <?php if (is_archive() || is_home()) : ?>
-            <div class="highlight-container">
-                <div class="panel-container">
-
-                    <?php
-                        $tags = get_tags();
-                        if ($tags) {
-                            foreach ($tags as $tag) {
-                                echo '<a data-filter="' . $tag->name . '" class="pill' . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a> ';
-                            }
-                        }
-                    ?>
-
-                </div>
-            </div>
-        <?php endif ?>
-    <?php endif ?>
