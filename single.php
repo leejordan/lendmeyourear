@@ -17,9 +17,7 @@
                 </div>
 
             <?php elseif ( get_post_meta($post->ID, 'custom-header', true) ) : ?>
-                <div class="post-container">
-                    <?php echo get_post_meta($post->ID, 'custom-header', true) ?>
-                </div>
+                <?php echo get_post_meta($post->ID, 'custom-header', true) ?>
             <?php endif ?>
 
             <?php echo get_post_meta($post->ID, 'custom-markup', true) ?>
