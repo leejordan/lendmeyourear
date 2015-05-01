@@ -13,11 +13,9 @@
         <?php while (have_posts()) : the_post(); ?>
 
             <li class="reflex-col-md-3 reflex-col-sm-4 reflex-col-xs-6">
-                <a class="panel reflex-item reflex-item-margin-lg reflex-item-content-margin-lg" href="<?php the_permalink() ?>">
-                    <h2><?php the_title(); ?></h2>
-                    <div class="reflex-item-footer">
-                        <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
-                    </div>
+                <a class="panel reflex-item reflex-item-margin-lg" href="<?php the_permalink() ?>">
+                    <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
+                    <h2><?php echo get_the_title(); ?></h2>
                 </a>
             </li>
 
