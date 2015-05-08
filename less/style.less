@@ -533,6 +533,7 @@ Tags: white, blue, light
         }
 
         &.post-prev {
+            z-index: @zindex-over;
             left: 0;
             text-align: left;
 
@@ -543,7 +544,7 @@ Tags: white, blue, light
                     content: '\2190';
                     width: 70px;
                     position: absolute;
-                    right: -15px;
+                    right: -2em;
                 }
 
                 &:focus,
@@ -558,6 +559,7 @@ Tags: white, blue, light
         }
 
         &.post-next {
+            z-index: @zindex-over;
             right: 0;
             text-align: right;
 
@@ -568,7 +570,7 @@ Tags: white, blue, light
                     content: '\2192';
                     width: 70px;
                     position: absolute;
-                    left: -15px;
+                    left: -2em;
                 }
 
                 &:focus,
@@ -767,6 +769,9 @@ Tags: white, blue, light
                     div.reply a {
                         .button-style();
                         .button-reply();
+                        &:after {
+                            top: 1em;
+                        }
                     }
 
                     ul.children {
