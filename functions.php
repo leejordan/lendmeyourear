@@ -12,7 +12,7 @@ wp_enqueue_script("respond", get_template_directory_uri() . '/js/respond.min.js'
 function fb_opengraph() {
     global $post;
 
-    if(is_single()) {
+    if(is_singular()) {
         if(has_post_thumbnail($post->ID)) {
             $img_src = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'large§');
         }
@@ -33,7 +33,14 @@ function fb_opengraph() {
 
 <?php
     } else {
-        return;
+?>
+
+<meta property="og:title" content="<?php echo bloginfo('name'); ?>" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="<?php echo bloginfo('url'); ?>" />
+<meta property="og:description" content="<?php echo bloginfo('description'); ?>"/>
+
+<?php
     }
 }
 add_action('wp_head', 'fb_opengraph', 5);
