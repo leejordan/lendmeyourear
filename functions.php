@@ -7,14 +7,13 @@ add_theme_support( 'post-thumbnails' );
 wp_enqueue_script("jquery");
 wp_enqueue_script("respond", get_template_directory_uri() . '/js/respond.min.js');
 
-/* meta */
-// facebook OG
-function fb_opengraph() {
+/* facebook and twitter meta data */
+function socialMeta() {
     global $post;
 
     if(is_singular()) {
         if(has_post_thumbnail($post->ID)) {
-            $img_src = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'large§');
+            $img_src = wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), 'medium');
         }
         if($excerpt = $post->post_excerpt) {
             $excerpt = strip_tags($post->post_excerpt);
@@ -31,6 +30,13 @@ function fb_opengraph() {
 <meta property="og:site_name" content="<?php echo bloginfo('name'); ?> - <?php echo bloginfo('description'); ?>"/>
 <meta property="og:image" content="<?php echo $img_src[0]; ?>"/>
 
+<meta name="twitter:card" value="summary" />
+<meta name="twitter:url" value="<?php echo the_permalink(); ?>" />
+<meta name="twitter:title" value="<?php echo the_title(); ?>" />
+<meta name="twitter:description" value="<?php echo $excerpt; ?>" />
+<meta name="twitter:image" value="<?php echo $img_src[0]; ?>" />
+<meta name="twitter:site" value="@leenternet" />
+
 <?php
     } else {
 ?>
@@ -43,7 +49,7 @@ function fb_opengraph() {
 <?php
     }
 }
-add_action('wp_head', 'fb_opengraph', 5);
+add_action('wp_head', 'socialMeta', 5);
 
 
 /* nav */
