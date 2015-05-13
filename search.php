@@ -29,7 +29,13 @@
 
     <?php else : /* no posts found */ ?>
 
-        <?php include '404.php' ?>
+        <div class="footer-container">
+            <p>Sorry but "<?php echo get_search_query() ?>" returned no results.</p>
+        </div>
+
+        <div class="post-container">
+            <?php get_search_form(); ?>
+        </div>
 
     <?php endif; /* end if haveposts */ ?>
 
