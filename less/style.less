@@ -173,11 +173,6 @@ Tags: white, blue, light
         margin-left: 0.5em;
     }
 
-    li {
-        margin-left: 0.5em;
-        margin-bottom: 0.6em;
-    }
-
     p {
         line-height: 1.8em;
     }
@@ -538,11 +533,16 @@ Tags: white, blue, light
             a {
                 margin-left: -140px;
 
+                &:before {
+                    content: "";
+                }
+
                 &:after {
                     content: '\2190';
                     width: 70px;
                     position: absolute;
                     right: -2em;
+                    color: #fff;
                 }
 
                 &:focus,
@@ -569,6 +569,7 @@ Tags: white, blue, light
                     width: 70px;
                     position: absolute;
                     left: -2em;
+                    color: #fff;
                 }
 
                 &:focus,
@@ -591,6 +592,14 @@ Tags: white, blue, light
             &:first-of-type {
                 font-size: 1.15em;
             }
+        }
+    }
+
+    .post-container,
+    .footer-container {
+        li {
+            margin-left: 0.5em;
+            margin-bottom: 0.6em;
         }
 
         strong {
