@@ -7,19 +7,6 @@ add_theme_support( 'post-thumbnails' );
 wp_enqueue_script("jquery");
 wp_enqueue_script("respond", get_template_directory_uri() . '/js/respond.min.js');
 
-
-/* change default wp output */
-// add_filter('next_posts_link_attributes', 'next_link_attributes');
-// add_filter('previous_posts_link_attributes', 'prev_link_attributes');
-
-// function prev_link_attributes() {
-//     return 'class="btn"';
-// }
-
-// function next_link_attributes() {
-//     return 'class="btn"';
-// }
-
 /* facebook and twitter meta data */
 function socialMeta() {
     global $post;

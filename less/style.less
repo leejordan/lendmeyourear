@@ -37,7 +37,7 @@ Tags: white, blue, light
         border: 1px solid transparent;
         overflow: hidden;
         color: @feature-dark;
-        font-family: 'Lato', sans-serif;
+        font-family: 'Lato', helvetica, sans-serif;
 
         &:link {}
 
@@ -593,6 +593,21 @@ Tags: white, blue, light
                 font-size: 1.15em;
             }
         }
+
+        img {
+            display: block;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            margin: 2em auto;
+
+            .pull-left,
+            .pull-right,
+            .alignleft,
+            .alignright {
+                margin: 0 auto;
+            }
+        }
     }
 
     .post-container,
@@ -625,21 +640,6 @@ Tags: white, blue, light
             width: 100%;
             text-align: right;
             color: @text-color;
-        }
-
-        img {
-            display: block;
-            max-width: 100%;
-            width: auto;
-            height: auto;
-            margin: 2em auto;
-
-            .pull-left,
-            .pull-right,
-            .alignleft,
-            .alignright {
-                margin: 0 auto;
-            }
         }
 
         .post-meta {
