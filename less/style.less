@@ -163,7 +163,7 @@ Tags: white, blue, light
 
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Lato', sans-serif;
-        margin: 0.6em 0;
+        margin: 2em 0 1em;
     }
 
     p, ul, ol, pre, blockquote, cite, table { margin-bottom: 0.6em; }
@@ -587,6 +587,10 @@ Tags: white, blue, light
 
 // post content
     .post-container {
+        > :first-child {
+            margin-top: 0;
+        }
+
         > p {
             margin-bottom: 2em;
 
