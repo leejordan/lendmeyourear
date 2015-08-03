@@ -13,6 +13,13 @@
 
             <div class="highlight-container">
                 <ul class="nav-container">
+
+                    <?php if (is_home()) : ?>
+
+                        <?php dynamic_sidebar( 'home_page_intro' ); ?>
+
+                    <?php endif ?>
+
                     <?php
                         $tags = get_tags();
                         if ($tags) {

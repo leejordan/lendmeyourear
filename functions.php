@@ -90,6 +90,21 @@ function register_my_menu() {
 }
 add_action( 'init', 'register_my_menu' );
 
+/* custom text on home page */
+function register_homepage_intro() {
+
+    register_sidebar( array(
+        'name'          => 'home_page_intro',
+        'id'            => 'home_page_intro',
+        'before_widget' => '<div class="post-container">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2">',
+        'after_title'   => '</h2>',
+    ) );
+
+}
+add_action( 'widgets_init', 'register_homepage_intro' );
+
 /* comments */
 function postHasComments( $type, $post_id ) {
     $comments = get_comments(array('status' => 'approve', 'comment_type' => $type, 'post_id' => $post_id));

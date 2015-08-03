@@ -340,8 +340,8 @@ Tags: white, blue, light
     }
 
     .panel-container {
-        -webkit-backface-visibility: hidden;
         -webkit-perspective: 1000;
+        -webkit-backface-visibility: hidden;
         max-width: 1600px;
         .flex-wrap();
         .justify-content-center();
@@ -353,6 +353,8 @@ Tags: white, blue, light
         .display-flex();
         .flex-wrap();
         .justify-content-center();
+        -webkit-perspective: 1000;
+        -webkit-backface-visibility: hidden;
         padding: 0.6em;
         margin: 0;
     }
@@ -363,8 +365,8 @@ Tags: white, blue, light
         position: relative;
         text-align: left;
         padding: 0.6em 1em;
-        margin: 0;
-        //border-bottom: 1px solid @feature-light;
+        margin: 0 auto;
+        max-width: 1600px;
 
         h1 {
             display: block;
@@ -618,6 +620,7 @@ Tags: white, blue, light
             border-radius: 5px;
             border: 1px solid #000;
             padding: 0.2em 0.5em;
+            white-space: nowrap;
         }
     }
 
