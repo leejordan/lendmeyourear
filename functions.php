@@ -96,8 +96,8 @@ function register_homepage_intro() {
     register_sidebar( array(
         'name'          => 'home_page_intro',
         'id'            => 'home_page_intro',
-        'before_widget' => '<div class="post-container">',
-        'after_widget'  => '</div>',
+        'before_widget' => '',
+        'after_widget'  => '',
         'before_title'  => '<h2">',
         'after_title'   => '</h2>',
     ) );

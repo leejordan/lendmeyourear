@@ -1,0 +1,111 @@
+// helpers
+
+.serif {
+    font-family: Georgia, serif;
+}
+
+.pill {
+    .pill-style();
+}
+
+.margin-reset {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.padding-reset {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.buffer {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.buffer-hz {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.clearfix {
+    .clearfix();
+}
+
+.pull-left,
+.alignleft {
+    float: left;
+
+    &.pull-left-buffer {
+        margin: 0 1em 1em 0;
+    }
+}
+
+.pull-right,
+.alignright {
+    float: right;
+    position: relative;
+
+    &.pull-right-buffer {
+        margin: 0 0 1em 1em;
+    }
+}
+
+.center,
+.aligncenter {
+    display: block;
+    margin: 1em auto;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+.embed-responsive {
+    position: relative;
+    display: block;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 2em;
+
+    .embed-responsive-item,
+    iframe,
+    embed,
+    object,
+    video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        border: 0;
+    }
+
+    &.embed-border {
+        border: 1px solid @feature-light;
+    }
+
+    // Modifier class for 16:9 aspect ratio
+    &.embed-responsive-16by9 {
+        padding-bottom: 56.25%;
+    }
+
+    // Modifier class for 4:3 aspect ratio
+    &.embed-responsive-4by3 {
+        padding-bottom: 75%;
+    }
+
+    // Modifier class for 4:3 aspect ratio
+    &.embed-responsive-square {
+        padding-bottom: 100%;
+    }
+}

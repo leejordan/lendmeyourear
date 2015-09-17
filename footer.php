@@ -1,6 +1,6 @@
-    <?php if (is_archive() || is_home() || is_single() || is_404()) : ?>
+    <?php if (is_archive() || is_home() || is_single()) : ?>
 
-        <div class="footer-container">
+        <div class="container-sm">
             <?php get_search_form(); ?>
         </div>
 
@@ -11,7 +11,7 @@
         <?php $args = array( 'numberposts' => get_option( 'posts_per_page' )); ?>
         <?php $recent_posts = get_posts( $args ); ?>
 
-        <div class="footer-container">
+        <div class="container-sm">
             <h3>Browse posts:</h3>
             <ul>
                 <?php foreach ($recent_posts as $post) : ?>

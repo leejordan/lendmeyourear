@@ -9,62 +9,94 @@
             <?php echo get_next_posts_link('Next page'); ?>
         </div>
 
-        <div class="highlight-container sans">
-            <div class="footer-container sans">
-                <p class="pull-left pull-reset-mobile margin-reset">
-                    <?php echo $wp_query->found_posts; ?> results for "<?php echo get_search_query(); ?>"
-                </p>
+        <main class="container-lg">
 
-                <?php if ($wp_query->max_num_pages > 1) : ?>
+            <section role="status">
+                <h1 class="theme-intro">
+                    Showing results for <strong>"<?php echo get_search_query(); ?>"</strong>
+                </h1>
+            </section>
 
-                    <p class="pull-right pull-reset-mobile margin-reset">
-                        <?php echo get_previous_posts_link('&laquo; prev') . ' page ' . $paged . ' of ' . $wp_query->max_num_pages . ' ' . get_next_posts_link('next &raquo;'); ?>
-                    </p>
+            <div class="grid grid--align-start">
+                <section class="grid__col-xs-12 grid__col--bleed">
+                    <ul class="grid grid--justify-center">
 
-                <?php endif ?>
+                        <?php while (have_posts()) : the_post(); ?>
 
-                <div class="clearfix"></div>
+                            <li class="grid__col-xs-6 grid__col-md-4 grid__col-lg-3">
+                                <a class="grid__cell panel" href="<?php the_permalink() ?>">
+
+                                    <?php if ( has_post_thumbnail() ) : ?>
+                                        <?php the_post_thumbnail('large'); ?>
+                                    <?php endif ?>
+
+                                    <div class="panel-text">
+                                        <h2><?php echo get_the_title(); ?></h2>
+                                    </div>
+                                </a>
+                            </li>
+
+                        <?php endwhile;/* end the main loop */ ?>
+
+                        <?php if ($wp_query->max_num_pages > 1) : ?>
+
+                            <p class="grid__col-12 grid--direction-row grid--justify-center">
+                                <?php echo get_previous_posts_link('&laquo; prev') . '<span class="buffer-hz">page ' . $paged . ' of ' . $wp_query->max_num_pages . '</span>' . get_next_posts_link('next &raquo;'); ?>
+                            </p>
+
+                        <?php endif ?>
+
+                    </ul>
+                </section>
             </div>
-        </div>
 
-        <ul class="panel-container reflex-container reflex-wrap reflex-justify-center">
-
-        <?php while (have_posts()) : the_post(); ?>
-
-            <li class="reflex-col-md-3 reflex-col-sm-4 reflex-col-xs-6">
-                <a class="panel reflex-item reflex-item-margin-lg" href="<?php the_permalink() ?>">
-                    <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
-                    <h2><?php echo get_the_title(); ?></h2>
-                </a>
-            </li>
-
-        <?php endwhile;/* end the main loop */ ?>
-
-        </ul>
-
-        <?php if ($wp_query->max_num_pages > 1) : ?>
-
-            <p class="sans">
-                <?php echo get_previous_posts_link('&laquo; prev') . ' page ' . $paged . ' of ' . $wp_query->max_num_pages . ' ' . get_next_posts_link('next &raquo;'); ?>
-            </p>
-
-        <?php endif ?>
-
-        <div class="post-container">
-            <?php get_search_form(); ?>
-        </div>
+            <div class="container-sm">
+                <?php get_search_form(); ?>
+            </div>
+        </main>
 
     <?php else : /* no posts found */ ?>
 
-        <div class="footer-container">
-            <p>Sorry but "<?php echo get_search_query() ?>" returned no results.</p>
+        <div class="highlight-container">
+            <div class="container-sm">
+
+                <h1 class="theme-intro" role="status">
+                    Sorry but <strong>"<?php echo get_search_query(); ?>"</strong> returned no results. You can try searching again:
+                </h1>
+
+                <?php get_search_form(); ?>
+
+            </div>
         </div>
 
-        <div class="post-container">
-            <?php get_search_form(); ?>
+        <div class="container-lg">
+            <h2 class="theme-intro">Or take a chance on these random posts:</h2>
+
+            <ul class="grid grid--justify-center">
+
+                <?php
+                $args = array( 'numberposts' => 4, 'orderby' => 'rand' );
+                $rand_posts = get_posts( $args );
+                foreach( $rand_posts as $post ) : ?>
+
+                    <li class="grid__col-xs-6 grid__col-md-4 grid__col-lg-3">
+                        <a class="grid__cell panel" href="<?php the_permalink() ?>">
+
+                            <?php if ( has_post_thumbnail() ) : ?>
+                                <?php the_post_thumbnail('large'); ?>
+                            <?php endif ?>
+
+                            <div class="panel-text">
+                                <h2><?php echo get_the_title(); ?></h2>
+                            </div>
+                        </a>
+                    </li>
+
+                <?php endforeach; ?>
+
+            </ul>
         </div>
 
     <?php endif; /* end if haveposts */ ?>
-
 
 <?php /* footer */ get_footer(); ?>

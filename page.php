@@ -4,7 +4,7 @@
 
         <?php while (have_posts()) : the_post(); ?>
 
-            <div class="post-container">
+            <div class="container-sm serif">
                 <h2><?php the_title(); ?></h2>
                 <?php the_content('Read more &gt;'); ?>
             </div>

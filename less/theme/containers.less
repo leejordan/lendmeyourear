@@ -1,0 +1,27 @@
+// containers
+
+.container-sm {
+    .container-sm();
+}
+
+.container-lg {
+    .container-lg();
+}
+
+// highlight container
+.highlight-container {
+    max-width: 100%;
+    width: 100%;
+    background-color: @highlight;
+    clear: both;
+    padding: 0.5em 0;
+
+    select,
+    textarea,
+    input:not([type=button]):not([type=submit]) {
+        &:hover,
+        &:focus {
+            background-color: #fff;
+        }
+    }
+}

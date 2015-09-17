@@ -1,0 +1,46 @@
+// header
+
+.theme-header {
+    margin: 2em auto;
+    padding: 0 0.5em;
+
+    ul {
+        .list-nav();
+        .list-inline();
+    }
+
+    .theme-header__title {
+        display: inline-block;
+        font-family: 'Lato', sans-serif;
+        .font-size(2.2);
+        font-weight: bold;
+
+        .theme-header__title__subtitle {
+            .font-size(1.8);
+            color:  @secondary-light;
+        }
+
+        &:hover,
+        &:focus {
+            .theme-header__title__subtitle {
+                color: @feature-dark;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.theme-intro {
+    font-family: 'Lato', sans-serif;
+    .font-size(1.2);
+    margin-top: 1em;
+    padding: 0 0.5em;
+    font-weight: normal;
+}
+
+@media (min-width: @reflex-sm) {
+    .theme-header,
+    .theme-intro {
+        text-align: center;
+    }
+}

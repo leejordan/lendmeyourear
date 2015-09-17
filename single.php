@@ -22,22 +22,23 @@
 
             <?php echo get_post_meta($post->ID, 'custom-markup', true) ?>
 
-            <div class="post-container">
-                <h2><?php the_title(); ?></h2>
+            <article class="container-sm serif">
+                <header>
+                    <h2><?php the_title(); ?></h2>
+                </header>
                 <?php the_content('Read more &gt;'); ?>
-                <div class="post-meta">
+                <footer class="post-meta">
                     <p>
                         Posted on: <?php the_date(); ?>
                         <br>Tagged: <?php echo get_the_tag_list( null, ', ', null ); ?>
                     </p>
-                </div>
-            </div>
-            <div class="highlight-container">
-                <div class="footer-container">
-                    <div class="clearfix"></div>
+                </footer>
+            </article>
+            <section class="highlight-container">
+                <div class="container-sm">
                     <?php comments_template(null, true); ?>
                 </div>
-            </div>
+            </section>
 
         <?php endwhile;/* end the main loop */ ?>
 

@@ -21,17 +21,20 @@
 <?php wp_head(); ?>
 </head>
 <body ontouchstart="" <?php body_class(); ?>>
-    <div class="header">
-        <h1>
-            <a href="<?php bloginfo('url'); ?>">
-                <?php bloginfo('name'); ?>
-                <span class="subheader">
-                    <?php bloginfo('description'); ?>
-                </span>
-            </a>
-        </h1>
-        <div class="header-link-section">
-            <?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
-        </div>
-        <div class="clearfix"></div>
-    </div>
+    <header class="container-sm theme-header" role="banner">
+        <a class="theme-header__title" href="<?php bloginfo('url'); ?>">
+            <?php bloginfo('name'); ?>
+            <br>
+            <span class="theme-header__title__subtitle">
+                <?php bloginfo('description'); ?>
+            </span>
+        </a>
+    </header>
+
+    <?php if (is_home()) : ?>
+
+        <section class="container-sm theme-intro" role="intro">
+            <?php dynamic_sidebar( 'home_page_intro' ); ?>
+        </section>
+
+    <?php endif ?>

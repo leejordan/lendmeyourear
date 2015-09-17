@@ -1,7 +1,5 @@
-<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-    <div class="form-group">
-        <label for="search"><h3><?php echo _x( 'Search for:', 'label' ) ?></h3></label>
-        <input type="search" id="search" class="search-field form-control" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
-    </div>
-    <button type="submit" class="search-submit btn btn-submit"/><?php echo esc_attr_x( 'Search', 'submit button' ) ?></button>
+<form class="grid grid--justify-space-between" role="search" method="get" action="<?php echo home_url( '/' ); ?>">
+    <label class="grid__col-12 grid__col--bleed" for="search"><h3>Search posts:</h3></label>
+    <input type="search" id="search" class="grid__col-8" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
+    <button type="submit" class="grid__col-4 grid--align-center btn btn-search btn-square"/><?php echo esc_attr_x( 'Search', 'submit button' ) ?></button>
 </form>

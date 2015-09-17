@@ -1,0 +1,90 @@
+// comments
+
+#comments {
+    text-align: left;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0.6em 0;
+    }
+
+    ol.commentlist {
+        list-style:none;
+        margin: 0;
+        padding: 1em 0;
+        text-indent:0;
+        border-bottom: 1px solid  @feature-light;
+
+        &.pingbacklist {
+            border-bottom: none;
+            border-top: 1px solid  @feature-light;
+            margin-top: 3em;
+        }
+
+        li {
+            margin: 0;
+
+            &.comment {
+                &:not(:first-of-type){
+                    margin-top: 6em;
+                }
+
+                .author {
+                    font-family: 'Lato', sans-serif;
+                    font-weight: bold;
+                    margin-bottom: 0.6em;
+                }
+
+                div.reply a {
+                    .button-style();
+                    .button-reply();
+                    &:after {
+                        top: 1em;
+                    }
+                }
+
+                ul.children {
+                    list-style:none;
+                    margin: 1em 0 0;
+                    text-indent:0;
+
+                    li.comment {
+                        margin-left: 1em;
+                        margin-top: 2em;
+
+                        .author-wrap {
+                            padding-left: 0.6em;
+
+                            .author {
+                                &:before {
+                                    content: "\21B5";
+                                    color: @secondary-light;
+                                    margin-right: 0.6em;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.comment {
+                border-top: 1px solid @feature-light;
+                padding-top: 0.6em;
+            }
+
+            &.pingback,
+            &.trackback {
+                margin-top: 0.6em;
+                padding: 0;
+
+                & + .pingback,
+                & + .trackback {
+                    margin-top: 0em;
+                }
+
+                .author {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

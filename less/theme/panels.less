@@ -1,0 +1,45 @@
+// post panels
+
+// internal post image for use in panels on home page/archive pages
+.wp-post-image {
+    .display-flex();
+    .flex(0, 0, auto);
+    height: auto;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    width: 100%;
+}
+
+a {
+    &.panel {
+        .panel-style();
+        text-align: left;
+        overflow: hidden;
+        background-color: @highlight;
+
+        .panel-text {
+            padding: 1em;
+
+            p,
+            h2 {
+                margin: 0;
+                font-weight: normal;
+                line-height: 1.3em;
+            }
+
+            h2 {
+                .font-size(1.4);
+                margin-bottom: 1em;
+            }
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            .transform(scale(1.02));
+            background-color: @feature-dark;
+            border: 1px solid @feature-dark;
+        }
+    }
+}

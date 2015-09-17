@@ -4,62 +4,94 @@
 
         <?php if (is_archive() || is_home()) : ?>
 
-            <div class="post-nav post-prev">
+            <nav class="post-nav post-prev">
                 <?php echo get_previous_posts_link('Newer posts'); ?>
-            </div>
-            <div class="post-nav post-next">
+            </nav>
+            <nav class="post-nav post-next">
                 <?php echo get_next_posts_link('Older posts'); ?>
-            </div>
-
-            <div class="highlight-container">
-                <ul class="nav-container">
-
-                    <?php if (is_home()) : ?>
-
-                        <?php dynamic_sidebar( 'home_page_intro' ); ?>
-
-                    <?php endif ?>
-
-                    <?php
-                        $tags = get_tags();
-                        if ($tags) {
-                            foreach ($tags as $tag) {
-                                echo '<li class="nav-item"><a data-filter="' . $tag->name . '" class="pill' . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a></li>';
-                            }
-                        }
-                    ?>
-
-                </ul>
-            </div>
+            </nav>
 
         <?php endif ?>
 
-        <ul class="reflex-container panel-container">
+        <main class="container-lg">
 
-    	<?php while (have_posts()) : the_post(); ?>
+        <?php if (is_archive()) : ?>
 
-            <li class="reflex-col-md-3 reflex-col-sm-4 reflex-col-xs-6">
-                <a class="panel reflex-item reflex-item-margin-lg" href="<?php the_permalink() ?>">
-                    <?php if ( has_post_thumbnail() ) the_post_thumbnail('large'); ?>
-                    <h2><?php echo get_the_title(); ?></h2>
-                </a>
-            </li>
+            <section role="status">
+                <h1 class="theme-intro">
+                    Showing posts tagged as <strong>"<?php single_cat_title('', true ); ?>"</strong>
+                </h1>
+            </section>
 
-        <?php endwhile;/* end the main loop */ ?>
+        <?php endif; ?>
 
-        </ul>
+            <div class="grid grid--align-start">
 
-        <?php if (is_archive() || is_home()) : ?>
+                <?php if (is_home()) : ?>
 
-            <?php if ($wp_query->max_num_pages > 1) : ?>
+                    <nav role="navigation" class="grid__col-xs-12 grid__col-sm-3 grid__col-md-2 grid--align-center grid__col--bleed">
+                        <ul class="grid nav-pills">
 
-                <p class="sans">
-                    <?php echo get_previous_posts_link('&laquo; prev') . ' page ' . $paged . ' of ' . $wp_query->max_num_pages . ' ' . get_next_posts_link('next &raquo;'); ?>
-                </p>
+                            <?php
+                                $tags = get_tags();
+                                if ($tags) {
+                                    foreach ($tags as $tag) {
+                                        echo '<li class="grid__col-12"><a data-filter="' . $tag->name . '" class="grid__cell' . (is_tag($tag->name) ? ' active' : null) . '" href="' . get_tag_link( $tag->term_id ) . '" title="' . sprintf( __( "View all posts tagged with %s" ), $tag->name ) . '" ' . '>' . $tag->name.'</a></li>';
+                                    }
+                                }
+                            ?>
 
-            <?php endif ?>
+                        </ul>
+                    </nav>
 
-        <?php endif ?>
+                <? endif; ?>
+
+                <?php if (is_archive() || is_home()) : ?>
+
+                    <?php if (is_archive()) : ?>
+
+                        <section class="grid__col-xs-12 grid__col--bleed">
+
+                    <?php else : ?>
+
+                        <section class="grid__col-xs-12 grid__col-sm-9 grid__col-md-10 grid__col--bleed">
+
+                    <?php endif; ?>
+
+                            <ul class="grid grid--justify-center">
+
+                                <?php while (have_posts()) : the_post(); ?>
+
+                                    <li class="grid__col-xs-6 grid__col-md-4 grid__col-lg-3">
+                                        <a class="grid__cell panel" href="<?php the_permalink() ?>">
+
+                                            <?php if ( has_post_thumbnail() ) : ?>
+                                                <?php the_post_thumbnail('large'); ?>
+                                            <?php endif ?>
+
+                                            <div class="panel-text">
+                                                <h2><?php echo get_the_title(); ?></h2>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                <?php endwhile;/* end the main loop */ ?>
+
+                                <?php if ($wp_query->max_num_pages > 1) : ?>
+
+                                    <p class="grid__col-12 grid--direction-row grid--justify-center">
+                                        <?php echo get_previous_posts_link('&laquo; prev') . '<span class="buffer-hz">page ' . $paged . ' of ' . $wp_query->max_num_pages . '</span>' . get_next_posts_link('next &raquo;'); ?>
+                                    </p>
+
+                                <?php endif ?>
+
+                            </ul>
+                        </section>
+
+                <?php endif ?>
+
+            </div>
+        </main>
 
     <?php else : /* no posts found */ ?>
 
