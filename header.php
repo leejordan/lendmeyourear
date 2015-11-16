@@ -19,6 +19,15 @@
 <link rel="SHORTCUT ICON" href="<?php bloginfo('template_directory'); ?>/favicon.ico"/>
 <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 <?php wp_head(); ?>
+<!--[if lt IE 9]>
+   <script>
+      document.createElement('header');
+      document.createElement('nav');
+      document.createElement('section');
+      document.createElement('main');
+      document.createElement('footer');
+   </script>
+<![endif]-->
 </head>
 <body ontouchstart="" <?php body_class(); ?>>
     <header class="container-sm theme-header" role="banner">
