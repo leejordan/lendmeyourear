@@ -25,7 +25,7 @@
                     <a class="grid__cell panel" href="<?php the_permalink() ?>">
 
                         <?php if ( has_post_thumbnail() ) : ?>
-                            <?php the_post_thumbnail('large'); ?>
+                            <?php the_post_thumbnail('smal'); ?>
                         <?php endif ?>
 
                         <div class="panel-text">

@@ -12,15 +12,11 @@
     &:link {}
 
     &:hover,
-    &:focus,
-    &:active {
-        .transform(scale(1.03));
+    &:focus {
         z-index: @zindex-over;
         text-decoration: none;
         outline: none;
         color: #fff;
-        background-color: @feature-light;
-        border: 1px solid @feature-light;
 
         h2 {
             color: #fff;
@@ -31,11 +27,15 @@
         }
     }
 
-    &.active {
-        .transform(scale(1.06));
-        color: #fff;
-        background-color: @feature-dark;
+    &:hover {
+        .transform(scale(1.03));
+        border: 1px solid @feature-light;
+        background-color: @feature-light;
+    }
+
+    &:focus {
         border: 1px solid @feature-dark;
+        background-color: @feature-dark;
     }
 }
 
@@ -56,11 +56,16 @@
 
     &:hover,
     &:focus {
-        outline: none;
         border: 1px solid @feature-dark;
         text-decoration: none;
         background-color: @highlight;
-        color: darken(@feature-dark, 20%);
+        color: @feature-darker;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px @feature-dark;
+        border-radius: @default-border-radius;
     }
 
     &[type="submit"] {
@@ -93,13 +98,13 @@
     }
 }
 
-.container-sm() {
+.container-small() {
     max-width: @max-width-post;
     width: 90%;
     margin: 1.5em auto;
 }
 
-.container-lg() {
+.container-large() {
     max-width: @max-width-container;
     width: 90%;
     margin: 1.5em auto;

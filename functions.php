@@ -1,7 +1,11 @@
 <?php
-/* automatic feed links */
+/* theme support */
 add_theme_support('automatic-feed-links');
 add_theme_support( 'post-thumbnails' );
+
+/* image sizes */
+add_image_size( 'large', 770, 400, true );
+add_image_size( 'small', 377, 196, true );
 
 /* javascript */
 wp_enqueue_script("jquery");

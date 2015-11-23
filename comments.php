@@ -57,12 +57,12 @@
 	$comment_args = array(
 	  'id_form'           => 'commentform',
 	  'id_submit'         => 'submit',
-	  'title_reply'       => __( 'Leave a Comment' ),
-	  'title_reply_to'    => __( 'Leave a Comment to %s' ),
-	  'cancel_reply_link' => __( 'Cancel Comment' ),
-	  'label_submit'      => __( 'Submit Comment' ),
+	  'title_reply'       => __( 'Have your say' ),
+	  'title_reply_to'    => __( 'Leave a reply to %s' ),
+	  'cancel_reply_link' => __( 'Cancel' ),
+	  'label_submit'      => __( 'Submit comment' ),
 
-	  'comment_field' =>  '<div class="form-group"><label for="comment">Comment:</label><textarea id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true"></textarea></div>',
+	  'comment_field' =>  '<div class="form-group"><label for="comment">Comment:</label><textarea id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true" required></textarea></div>',
 
 	  'must_log_in' => '<p class="must-log-in">' .
 	    sprintf(
@@ -78,7 +78,7 @@
 	      wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) )
 	    ) . '</p>',
 
-	  'comment_notes_before' => null,
+	  'comment_notes_before' => '',
 
 	  'comment_notes_after' => '<p class="form-allowed-tags"><small>wrap any code samples in &lt;pre class="prettyprint"&gt;...&lt;/pre&gt;</small></p>',
 
@@ -87,17 +87,17 @@
 	    'author' =>
 	      '<div class="form-group">' .
 	      '<p class="comment-form-author">' .
-	      '<label for="author">' . __( 'Name: ', 'domainreference' ) . '</label> ' .
+	      '<label for="author">' . __( 'Name ', 'domainreference' ) . '<small>(optional)</small></label> ' .
 	      '<input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
-	      '" size="30"' . $aria_req . ' /></p>' .
+	      '" size="30"/></p>' .
 	      '</div>',
 
 	    'email' =>
 	      '<div class="form-group">' .
 	      '<p class="comment-form-email">' .
-	      '<label for="email">' . __( 'Email address:', 'domainreference' ) . '</label> ' .
-	      '<input id="email" class="form-control" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
-	      '" size="30"' . $aria_req . ' /></p>' .
+	      '<label for="email">' . __( 'Email address ', 'domainreference' ) . '<small>(optional)</small></label> ' .
+	      '<input id="email" class="form-control" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+	      '" size="30" /></p>' .
 	      '</div>',
 	    )
 	  ),

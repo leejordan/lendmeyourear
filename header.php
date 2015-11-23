@@ -32,8 +32,7 @@
 <body ontouchstart="" <?php body_class(); ?>>
     <header class="container-sm theme-header" role="banner">
         <a class="theme-header__title" href="<?php bloginfo('url'); ?>">
-            <?php bloginfo('name'); ?>
-            <br>
+            <?php bloginfo('name'); ?><br>
             <span class="theme-header__title__subtitle">
                 <?php bloginfo('description'); ?>
             </span>

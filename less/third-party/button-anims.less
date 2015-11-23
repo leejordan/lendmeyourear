@@ -1,7 +1,8 @@
 // variables
 
 @bg-color: @feature-light;
-@bg-color-focus: @feature-darker;
+@bg-color-focus: @feature-dark;
+@btn-border-radius: 3px;
 @btn-text-color: #FFF;
 @font-size: 1em;
 @font-family: 'Lato', helvetica, sans-serif;
@@ -47,21 +48,23 @@
 
 .button-style() {
     .transition(all 0.2s ease);
+    display: inline-block;
+    position: relative;
     vertical-align: middle;
-    border-radius: 3px;
     overflow: hidden;
     color: @btn-text-color;
-    display: inline-block;
-    padding: @font-size/1.5 @font-size*2;
-    position: relative;
+    padding: (@font-size * 0.6) (@font-size * 2);
+    margin-bottom: (@font-size * 0.31);
     font-family: @font-family;
     font-size: @font-size;
     line-height: @font-size;
     cursor: pointer;
     text-decoration: none;
+    background-image: none;
     background-color: @bg-color;
     color: @btn-text-color;
     border: 0;
+    border-radius: @btn-border-radius;
 
     &:hover,
     &:focus {
@@ -77,14 +80,19 @@
         .backface-visibility();
         .transition(all 0.4s ease);
         position: absolute;
-        right: @font-size*0.75;
+        top: (@font-size * 0.6);
         font-family: @icon-font-family;
         color: @bg-color;
     }
 
     &:before {
-        right: auto;
         left: @font-size*0.75;
+        right: auto;
+    }
+
+    &:after {
+        left: auto;
+        right: @font-size*0.75;
     }
 
     &:hover,
@@ -157,7 +165,6 @@
 
     &:after {
         content: "\2192";
-        font-size: 85%;
     }
 
     &:hover,
@@ -174,6 +181,7 @@
 
     &:after {
         content: "\21B5";
+        top: (@font-size * 0.8);
         .transform(rotate(-90deg));
     }
 
@@ -362,7 +370,6 @@
 
     &:after {
         content: "\2606";
-        font-size: 80%;
         .transform(rotateZ(45deg));
     }
 
@@ -379,7 +386,6 @@
 
     &:after {
         content: "\2605";
-        font-size: 80%;
         .transform(rotateZ(45deg));
     }
 
@@ -396,17 +402,6 @@
 
     &:after {
         content: "\2312";
-        font-size: 80%;
-        .animation(rotate 0.5s infinite normal linear);
-    }
-}
-
-.button-loading-arrow() {
-    .button-icon();
-
-    &:after {
-        content: "\21BB";
-        .transform-origin(50%, 52%);
         .animation(rotate 0.5s infinite normal linear);
     }
 }
@@ -419,10 +414,6 @@ button {
         .button-style();
     }
 
-    &.btn + .btn {
-      margin-bottom: @font-size*0.31;
-    }
-
     &.btn-square {
         border-radius: 0;
     }
@@ -431,6 +422,10 @@ button {
         width: 100%;
         display: block;
         text-align: center;
+    }
+
+    &.btn-block + .btn-block {
+        margin-top: @font-size / 2;
     }
 
     &.btn-active {
@@ -507,9 +502,5 @@ button {
 
     &.btn-loading {
         .button-loading();
-    }
-
-    &.btn-loading-arrow {
-        .button-loading-arrow();
     }
 }
