@@ -24,7 +24,7 @@
 
             <article class="container-sm serif">
                 <header>
-                    <h2><?php the_title(); ?></h2>
+                    <h1><?php the_title(); ?></h1>
                 </header>
                 <?php the_content('Read more &gt;'); ?>
                 <footer class="post-meta">
